@@ -2,61 +2,52 @@
 <?php
 
     $inData = getRequestInfo();
-// for testing
-if (is_null($inData)) {
-printf("JSON cannot be decoded\n");}
 
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
     $login = $inData["login"];
     $password = $inData["password"];
-
-// for testing
-printf("first name is %s", $firstName);
-printf("\nlast name is %s", $lastName);
-printf("\nlogin is %s", $login);
-printf("\npassword is %s", $password);
 	
+	// connect to Users
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 // clean up Users (for testing)
-$conn->query("DELETE FROM Users WHERE Login='user123'");
+//$conn->query("DELETE FROM Users WHERE Login='user123'");
 
-	if ($conn->connect_error) 
-	{
-// for testing
-printf("Error!!!");
+	// connection error
+	if ($conn->connect_error) {
+		returnWithError( $conn->connect_error ); 
+	
+	} else {
 
-		returnWithError( $conn->connect_error );
-	} 
-	else
-	{
-// for testing
-printf("\nNo connection error\n");
-
-        $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
-
-		if ($stmt->execute()) 
-		{
-// for testing
-printf("Executed succesfully\n");
-		returnWithError("");
-		} else {
-			returnWithError("Error!");
-		}
-
-		/*
+		// check if user already exists
+		$stmt = $conn->prepare("SELECT Login, Password FROM Users");
+		$stmt->execute();
 		$result = $stmt->get_result();
+		$register = false;
 
-		if( $row === $result->fetch_assoc()  )
-		{
-			returnWithError("User already exists");
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				echo "login: " . $row["Login"]. "\npassword: ". $row["Password"]. "\n\n";
+				
+				if ($row["Login"] == $login) 
+					break;
+				else
+					$register = true;
+			}
+		} else {
+			echo "0 results";
 		}
-		else
-		{
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['login'], $row['password'] );
-		}*/
+
+		// register new user
+		if ( $register ) {
+			$stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
+			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
+			$stmt->execute();
+			returnWithError("");
+		} else {
+			returnWithError("Username already exists");
+		}
 
 		$stmt->close();
 		$conn->close();
