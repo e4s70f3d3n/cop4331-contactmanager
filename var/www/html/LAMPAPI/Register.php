@@ -24,16 +24,20 @@
 		$stmt = $conn->prepare("SELECT Login, Password FROM Users");
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$register = false;
+		$register = true;
 
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
-				echo "login: " . $row["Login"]. "\npassword: ". $row["Password"]. "\n\n";
-				
-				if ($row["Login"] == $login) 
+				echo "login: " . $row["Login"]. "\npassword: ". $row["Password"]. "\n";
+
+				echo "" . $row["Login"]. "==" . $login. " is ";
+				$val = $row["Login"] == $login;
+				echo $val ? 'true' : 'false';
+				echo "\n\n";
+				if ($row["Login"] == $login) {
+					$register = false;
 					break;
-				else
-					$register = true;
+				}
 			}
 		} else {
 			echo "0 results";
