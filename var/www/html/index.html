@@ -12,43 +12,45 @@
     </head>
 
     <body>
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <h1 class="h1" style="font-size: 100px;">Cosmic Contacts</h1>
-            </div>
-            <div class="row  justify-content-center">
-                <form>
+
+        <form action="LAMPAPI/Login.php" method="post">
+            <div class="container-fluid text-center">
+                <div class="row justify-content-center">
+                    <h1 class="h1 xxl">Cosmic Contacts</h1>
+                </div>
+                <div class="row  justify-content-center" style="padding: 10%">
                     <div class="col-md-4">
                         <input
                             type="text"
-                            class="form-control"
                             name="username"
                             id="usernameField"
                             placeholder="username"
-                            style="margin: 2px" />
+                            style="margin: 2px"
+                            required />
                         <input
                             type="password"
-                            class="form-control"
                             name="password"
                             id="passwordField"
                             placeholder="password"
-                            style="margin: 2px" />
+                            style="margin: 2px"
+                            required />
 
                     </div>
-                </form>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <button id="loginButton"
-                        style="margin-bottom: 10px;">Login</button>
                 </div>
-            </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <button id="loginButton"
+                            style="margin-bottom: 10px;"
+                            type="submit">Login</button>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col-4">
-                    <!-- I should change this to an <a> element to link the register page-->
-                    <button id="passwordButton">Register</button>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <!-- I should change this to an <a> element to link the register page-->
+                        <a id="registerButton" href = "register.html">Register</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </body>
