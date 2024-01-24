@@ -11,9 +11,6 @@
 	// connect to Users
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
-// clean up Users (for testing)
-//$conn->query("DELETE FROM Users WHERE Login='user123'");
-
 	// connection error
 	if ($conn->connect_error) {
 		returnWithError( $conn->connect_error ); 
@@ -21,26 +18,19 @@
 	} else {
 
 		// check if user already exists
-		$stmt = $conn->prepare("SELECT Login, Password FROM Users");
+		$stmt = $conn->prepare("SELECT Login FROM Users");
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$register = true;
 
+		// non-empty database
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
-				echo "login: " . $row["Login"]. "\npassword: ". $row["Password"]. "\n";
-
-				echo "" . $row["Login"]. "==" . $login. " is ";
-				$val = $row["Login"] == $login;
-				echo $val ? 'true' : 'false';
-				echo "\n\n";
 				if ($row["Login"] == $login) {
 					$register = false;
 					break;
 				}
 			}
-		} else {
-			echo "0 results";
 		}
 
 		// register new user
