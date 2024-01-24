@@ -32,7 +32,7 @@ printf("Error!!!");
 	else
 	{
 // for testing
-printf("No connection error\n");
+printf("\nNo connection error\n");
 
         $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
