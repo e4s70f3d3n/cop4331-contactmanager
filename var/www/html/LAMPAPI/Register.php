@@ -41,9 +41,11 @@ printf("\nNo connection error\n");
 		{
 // for testing
 printf("Executed succesfully\n");
-
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['login'], $row['password'] );
+		returnWithError("");
+		} else {
+			returnWithError("Error!");
 		}
+
 		/*
 		$result = $stmt->get_result();
 
@@ -74,12 +76,6 @@ printf("Executed succesfully\n");
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
-
-    function returnWithInfo( $firstName, $lastName, $login, $password)
-	{
-		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
