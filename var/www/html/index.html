@@ -17,14 +17,14 @@
             <form onsubmit="return login()">
                 <div class="row justify-content-center">
                     <div class="col">
-                        <h1 class="h1" style="padding:10%">Cosmic Contacts</h1>
+                        <h1 class="h1">Cosmic Contacts</h1>
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center inputDiv">
                     <div class="col"
                         style="flex-direction: column;">
-                        <label class = "cosmicLabel">Username</label>
+                        <label>Username</label>
                         <br />
                         <input
                             type="text"
@@ -36,16 +36,17 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col">
-                        <label class = "cosmicLabel">Password</label>
+                        <label>Password</label>
                         <br/>
                         <input
                             type="password"
                             name="password"
                             id="password"
                             placeholder="Password"
+                            style = "margin-bottom: 10px"
                             required />
                         <br/>
-                        <p style = "margin:2%">Forgot <a href="recover.html">password?</a></p>
+                        <p class = "containLink">Forgot <a href="recover.html">password?</a></p>
                     </div>
                 </div>
 
