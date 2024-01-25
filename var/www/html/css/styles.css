@@ -7,24 +7,44 @@
 }
 @font-face {
     font-family: "Kaoly";
-    letter-spacing: "5%";
     src: 
         local("Kaoly"),
         url("fonts/Kaoly-Demo-Regular.ttf") format("truetype");
 }
 
-.h1{
+h1{
     font-family: 'Kaoly';
-    font-size: "100dp";
+    font-size: 500px;
+    
 }
 
 .cosmicButton{
     font-family: 'Magica';
     font-size: '20px';
-    height: 60px;
+    height: 50px;
     width: 220px;
     background-color: blue;
     color:aliceblue;
-
+    transition-duration: 0.5s;
 }
 
+.cosmicButton:hover{
+    color:blue;
+    background-color: aliceblue;
+}
+
+label{
+    font-family: 'Magica';
+    font-size: 20px;
+}
+
+p{
+    font-family: 'Magica';
+    font-size: 12px;
+}
+
+input{
+    font-family: 'Magica';
+    font-size: 20px;
+    width: 488px;
+}
