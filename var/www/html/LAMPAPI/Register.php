@@ -12,10 +12,11 @@
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	// connection error
-	if ($conn->connect_error) {
+	if ($conn->connect_error)
 		returnWithError( $conn->connect_error ); 
 	
-	} else {
+	else 
+	{
 
 		// check if user already exists
 		$stmt = $conn->prepare("SELECT Login FROM Users");
@@ -24,9 +25,12 @@
 		$register = true;
 
 		// non-empty database
-		if ($result->num_rows > 0) {
-			while ($row = $result->fetch_assoc()) {
-				if ($row["Login"] == $login) {
+		if ($result->num_rows > 0) 
+		{
+			while ($row = $result->fetch_assoc()) 
+			{
+				if ($row["Login"] == $login) 
+				{
 					$register = false;
 					break;
 				}
@@ -34,14 +38,14 @@
 		}
 
 		// register new user
-		if ( $register ) {
+		if ( $register ) 
+		{
 			$stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
 			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 			$stmt->execute();
 			returnWithError("");
-		} else {
+		} else
 			returnWithError("Username already exists");
-		}
 
 		$stmt->close();
 		$conn->close();
