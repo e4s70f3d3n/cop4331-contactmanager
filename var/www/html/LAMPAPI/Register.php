@@ -8,7 +8,7 @@
     $login = $inData["login"];
     $password = $inData["password"];
 	
-	// connect to Users
+	// connect to database
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	// connection error
