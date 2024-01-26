@@ -4,6 +4,7 @@
     $name = $inData["name"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
+    $userId = $inData["userId"];
 
     // connect to Users
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -15,8 +16,11 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email) VALUES(?,?,?)");
-		$stmt->bind_param("sis", $name, $phone, $email);
+// clean up Contacts (for testing)
+$conn->query("DELETE FROM Contacts WHERE Name='Sarah'");
+
+		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
+		$stmt->bind_param("sisi", $name, $phone, $email, $userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
