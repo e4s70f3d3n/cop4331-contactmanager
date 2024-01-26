@@ -1,4 +1,4 @@
-const urlBase = 'http://COP4331-5.com/LAMPAPI';
+const urlBase = 'http://cop4331-15.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -38,6 +38,8 @@ function doLogin()
 				if( userId < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").style.visibility = "visble";
+
 					return;
 				}
 		
