@@ -1,4 +1,6 @@
+
 <?php
+
 	$inData = getRequestInfo();
 	
     $name = $inData["name"];
@@ -10,15 +12,11 @@
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	
     // connection error
-    if ($conn->connect_error) 
-	{
+    if ($conn->connect_error) {
 		returnWithError( $conn->connect_error );
-	} 
-	else
-	{
-// clean up Contacts (for testing)
-$conn->query("DELETE FROM Contacts WHERE Name='Sarah'");
-
+	
+    // add contact
+    } else {
 		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
 		$stmt->bind_param("sisi", $name, $phone, $email, $userId);
 		$stmt->execute();
