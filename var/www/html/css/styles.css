@@ -1,19 +1,68 @@
-
 @font-face {
     font-family: "Magica";
-    src: 
+    src:
         local("Magica"),
         url("fonts/Magica.otf") format("opentype");
 }
+
 @font-face {
     font-family: "Kaoly";
-    size-adjust: 250%;
-    src: 
+    size-adjust: 200%;
+    src:
         local("Kaoly"),
         url("fonts/Kaoly.ttf") format("truetype");
 }
 
-h1{
+@media only screen and (max-width: 600px) {
+
+    @font-face {
+        font-family: "Kaoly";
+        size-adjust: 250vh;
+        src:
+            local("Kaoly"),
+            url("fonts/Kaoly.ttf") format("truetype");
+    }
+
+
+    input {
+        font-family: 'Magica';
+        font-size: 20px;
+        max-width: 488px;
+        max-height: 63px;
+        border: 3px solid plum;
+        border-radius: 5px;
+
+    }
+
+
+    label {
+        font-family: 'Magica';
+        font-size: 10px;
+    }
+
+
+    .cosmicButton {
+        font-family: 'Magica';
+        font-size: '12px';
+        height: 32.5px;
+        width: 90px;
+        background-color: blue;
+        color: aliceblue;
+        transition-duration: 0.5s;
+        border: solid 5px;
+        border-radius: 15px;
+        border-color: aliceblue;
+        text-align: center;
+    }
+
+
+    p {
+        font-family: 'Magica';
+        font-size: 6px;
+    }
+}
+
+h1 {
     font-family: 'Kaoly';
     animation: 3s ease-out 0s 1 slideInFromAbove;
     font-size: 100px;
@@ -21,43 +70,45 @@ h1{
 }
 
 
-body{
-    background: linear-gradient(180deg, rgba(113,97,239,1) 0%, rgba(183,156,237,1) 50%, rgba(222,192,241,1) 100%), url('images/purple_saturn.png'); 
+body {
+    background: linear-gradient(180deg, rgba(113, 97, 239, 1) 0%, rgba(183, 156, 237, 1) 50%, rgba(222, 192, 241, 1) 100%), url('images/purple_saturn.png');
     background-position: left bottom;
     animation: 3s ease-out 0s 1 slideInFromAbove;
 }
 
-.container-fluid{
-    background-image: url('images/purple_saturn.png'); 
+.container-fluid {
+    background-image: url('images/purple_saturn.png');
     background-position: left bottom;
 }
 
-.anchored{
+.anchored {
     position: absolute;
 }
 
 
 @keyframes slideInFromAbove {
-    0%{
+    0% {
         transform: translateY(-30px);
         opacity: 0%;
     }
-    100%{
+
+    100% {
         opacity: 100%;
         transform: translateY(0px);
     }
 }
-.inputDiv{
+
+.inputDiv {
     padding: 3%;
 }
 
-.cosmicButton{
+.cosmicButton {
     font-family: 'Magica';
     font-size: '20px';
     height: 65px;
     width: 220px;
     background-color: blue;
-    color:aliceblue;
+    color: aliceblue;
     transition-duration: 0.5s;
     border: solid 5px;
     border-radius: 15px;
@@ -65,37 +116,38 @@ body{
     text-align: center;
 }
 
-.cosmicButton:hover{
+.cosmicButton:hover {
     transform: translateY(-5px);
     cursor: pointer;
 }
 
-.containLink:hover{
+.containLink:hover {
     transform: translateY(-2px);
     cursor: pointer;
 }
 
-.containLink{
+.containLink {
     transition-duration: 1s;
 }
 
-label{
+label {
     font-family: 'Magica';
     font-size: 20px;
 }
 
-p{
+p {
     font-family: 'Magica';
     font-size: 12px;
 }
 
-input{
+
+input {
     font-family: 'Magica';
     font-size: 20px;
-    width: 488px;
-    height: 63px;
+    max-width: 488px;
+    max-height: 63px;
     border: 3px solid plum;
     border-radius: 5px;
     padding-left: 1%;
-    
+
 }
