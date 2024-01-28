@@ -74,6 +74,8 @@ body {
     background: linear-gradient(180deg, rgba(113, 97, 239, 1) 0%, rgba(183, 156, 237, 1) 50%, rgba(222, 192, 241, 1) 100%), url('images/purple_saturn.png');
     background-position: left bottom;
     animation: 3s ease-out 0s 1 slideInFromAbove;
+    height: 100%;
+    width: 100%;
 }
 
 .container-fluid {
