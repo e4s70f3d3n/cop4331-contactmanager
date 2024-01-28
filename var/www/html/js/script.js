@@ -60,6 +60,59 @@ function doLogin()
 
 }
 
+function doRegister()
+{
+	firstName = document.getElementById("firstName").value;
+	lastName = document.getElementById("lastName").value;
+
+	let username = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
+
+	var hash = md5(password);
+	
+	document.getElementById("loginResult").innerHTML = "";
+
+	let tmp = {firstName:firstName, lastName:lastName, login:username, password:hash};
+
+	let jsonPayload = JSON.stringify(tmp);
+
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;
+		
+				if( userId < 1 )
+				{		
+					document.getElementById("registerResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+		
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
+	
+				window.location.href = "index.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+
+}
+
 function saveCookie()
 {
 	let minutes = 20;
