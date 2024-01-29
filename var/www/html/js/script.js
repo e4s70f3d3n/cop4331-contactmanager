@@ -101,7 +101,7 @@ function doRegister()
 
 				saveCookie();
 	
-				window.location.href = "index.html";
+				window.location.href = "landing.html";
 			}
 		};
 		xhr.send(jsonPayload);
