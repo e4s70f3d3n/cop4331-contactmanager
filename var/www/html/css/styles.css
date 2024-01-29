@@ -72,8 +72,7 @@ h1 {
 
 h3 {
     font-family: 'Kaoly';
-    animation: 3s ease-out 0s 1 slideInFromAbove;
-    font-size-adjust: 10%;
+    transform: scale(50%);
 }
 
 
