@@ -156,6 +156,7 @@ input {
     border: 3px solid plum;
     border-radius: 5px;
     padding-left: 1%;
+    padding-right: 40px;
 }
 
 .checklist-title {
@@ -178,7 +179,10 @@ input {
 }
 
 .criteria-listed {
-    padding-left: 45px;
+    padding-left: 70px;
+    width: 50%;
+    background: aliceblue;
+    background-position: 25% 25%;
 }
 
 .criteria-listed::before {
@@ -186,6 +190,7 @@ input {
     font-family: FontAwesome;
     position: relative;
     display: inline-block;
+    color: red;
     margin: 8px 12px;
     margin-left: -15px;
 }
