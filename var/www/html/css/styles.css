@@ -178,9 +178,7 @@ input {
 }
 
 .criteria-listed {
-    padding-left: 70px;
-    width: 50%;
-    background: aliceblue;
+    background: transparent;
     background-position: 25% 25%;
 }
 
