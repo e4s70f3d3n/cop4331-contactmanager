@@ -75,18 +75,70 @@ function doRegister() {
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8");
 
-	xhr.onreadystatechange = function(){
+	try {
+		xhr.onreadystatechange = function () {
+
+			if (this.status == 409) {
+				window.location.href = "landing.html";
+                document.getElementById("registerResult").innerHTML = "Username already exists";
+                return;
+            }
+
+            if (this.readyState == 4 && this.status == 200) {
+
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+                //document.getElementById("registerResult").innerHTML = "User created";
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+				
+                saveCookie();
+                window.location.href = "landing.html";
+            }
+        };
+
+		xhr.send(body);
+	} catch (err) {
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
+	/*try
+	{
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;	
+				document.getElementById("registerResult").innerHTML = "User created";
+					return;
+			}
+		
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
+	
+				window.location.href = "color.html";
+			};
+	}
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+	/*xhr.onreadystatechange = function(){
+
 		if(xhr.readyState == 4 && xhr.status == 200){
-			document.getElementById("registerResult").innerHTML = xhr.responseText;
+			//document.getElementById("registerResult").innerHTML = xhr.responseText;
 			//saveCookie();
-			window.open("http://cop4331-15.xyz/");
-			window.close();
+			//window.open("http://cop4331-15.xyz/");
+			//window.close();
 		}
 		else{
 			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
 		}
 	}
-	xhr.send(body);
+	xhr.send(body);*/
 }
 
 function saveCookie() {
