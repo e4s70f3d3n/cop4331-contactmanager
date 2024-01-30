@@ -204,3 +204,13 @@ input {
 .show-password:hover {
     color: #212529;
 }
+
+
+.criteria-listed.checked {
+    opacity: 0.5;
+}
+
+.criteria-listed.checked::before {
+    content: '\f00c';
+    color: lawngreen;
+}

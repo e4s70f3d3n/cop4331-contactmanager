@@ -15,14 +15,17 @@
         <script type="text/javascript" src="js/md5.js"></script>
     </head>
 
-    <body>
+        <body>
         <div class="container-fluid justify-content-center text-center">
-            <form>
-                <header><div class="row justify-content-center">
+
+            <form action='LAMPAPI/Login.php' method="POST">
+                <form onsubmit="return doLogin()">
+                    <header><div class="row justify-content-center">
                         <div class="col">
                             <h1 class="h1">Cosmic Contacts</h1>
                         </div>
                     </div></header>
+             </div>
 
                 <div class="row" style="flex-direction: column;">
                     <div class="col">
@@ -38,21 +41,14 @@
                             placeholder="Username"
                             required />
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <label>Password</label>
-                        <br />
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                            style="margin-bottom: 10px"
-                            required />
-                        <br />
-                        <p class="containLink">Forgot <a
-                                href="recover.html">password?</a></p>
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <label>Password</label>
+                            <br />
+                            <input type="password" name="password" id="password" placeholder="Password" style="margin-bottom: 10px" required />
+                            <br />
+                            <p class="containLink">Forgot <a href="recover.html">password?</a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="row justify-content-center" style="margin:5%">
