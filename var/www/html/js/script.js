@@ -58,7 +58,7 @@ function doRegister() {
 
 
 	firstName = document.getElementById("firstName").value;
-	lastname = document.getElementById("lastName").value;
+	lastName = document.getElementById("lastName").value;
 	let username = document.getElementById("username").value;
 	let password = document.getElementById("password").value;
 
