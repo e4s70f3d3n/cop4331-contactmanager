@@ -57,38 +57,36 @@ function doLogin() {
 function doRegister() {
 
 
-    firstName = document.getElementById("firstName").value();
-    lastname = document.getElementById("lastName").value();
-    let username = document.getElementById("username").value();
-    let password = document.getElementById("password").value();
+	firstName = document.getElementById("firstName").value;
+	lastname = document.getElementById("lastName").value;
+	let username = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
 
-    const url = urlBase + "/Register." + extension;
+	const url = urlBase + "/Register." + extension;
 
-    const body = JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        login: username,
-        password: password
-    })
+	const body = JSON.stringify({
+		firstName: firstName,
+		lastName: lastName,
+		login: username,
+		password: password
+	})
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8")
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8");
 
-
-
-    xhr.onload = () => {
-        if(xhr.readyState == 4 && xhr.status == 200){
-            //document.getElementById("registerResult").innerHTML = JSON.parse(xhr.responseText);
-			window.open('http://cop4331-15.xyz/landing.html')
-        }
-        else{
-            document.getElementById("registerResult").innerHTML = "MORON!!!";
-        }
-    };
-
-	xhr.send(body)
-
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			document.getElementById("registerResult").innerHTML = xhr.responseText;
+			//saveCookie();
+			//window.location.href('http://cop4331-15.xyz/')
+		}
+		else{
+			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`
+			//window.location.href('http://cop4331-15.xyz/recover.html')
+		}
+	}
+	xhr.send(body);
 }
 
 function saveCookie() {
