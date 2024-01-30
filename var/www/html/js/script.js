@@ -79,11 +79,11 @@ function doRegister() {
 		if(xhr.readyState == 4 && xhr.status == 200){
 			document.getElementById("registerResult").innerHTML = xhr.responseText;
 			//saveCookie();
-			//window.location.href('http://cop4331-15.xyz/')
+			window.open("http://cop4331-15.xyz/");
+			window.close();
 		}
 		else{
-			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`
-			//window.location.href('http://cop4331-15.xyz/recover.html')
+			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
 		}
 	}
 	xhr.send(body);
