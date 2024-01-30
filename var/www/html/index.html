@@ -26,9 +26,7 @@
 
                 <div class="row" style="flex-direction: column;">
                     <div class="col">
-                        <p id="loginResult"
-                            style="visibility: collapse;">Incorrect Username
-                            and/or Password!</p>
+                        <span class="text" id="loginResult"></span>
                     </div>
                     <div class="col">
                         <label>Username</label>
@@ -60,12 +58,13 @@
                 <div class="row justify-content-center" style="margin:5%">
                     <div class="col-md-6 justify-content-center"
                         style="flex-direction: column;">
-                        <button class="cosmicButton" type="submit" id = "submitButton" onclick="doLogin()"
+                        <button class="cosmicButton" type="submit"
+                            id="submitButton" onclick="doLogin()"
                             style="margin-bottom: 5%">Login</button>
                         <br />
                     </form>
                     <button class="cosmicButton" type="button"
-                        onclick= "window.location.href='register.html'">Create
+                        onclick="window.location.href='register.html'">Create
                         New User</button>
                 </div>
             </div>
