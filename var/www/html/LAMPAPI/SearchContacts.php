@@ -14,20 +14,21 @@
 		returnWithError( $conn->connect_error );
 	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID=?");
-		$contactName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $colorName, $inData["userId"]);
+		// find search results based on input parameter
+		$stmt = $conn->prepare("select * from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?) and UserID=?");
+		$searchParameter = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ssssi", $searchParameter, $searchParameter, $searchParameter, $searchParameter, $inData["userId"]);
 		$stmt->execute();
-		
 		$result = $stmt->get_result();
 		
+		// add each result to a single string
 		while($row = $result->fetch_assoc())
 		{
 			if( $searchCount > 0 )
 				$searchResults .= ",";
 			
+			$searchResults .= '{"firstName":"' . $row["FirstName"] . '","lastName":"' . $row["LastName"] . '","phone":"' . $row["Phone"] . '","email":"' . $row["Email"] . '"}';
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
 		}
 		
 		if( $searchCount == 0 )
