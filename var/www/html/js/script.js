@@ -10,11 +10,11 @@ function doLogin() {
 	firstName = "";
 	lastName = "";
 
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
+	let login = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
-	document.getElementById("loginResult").innerHTML = "";
+//	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
@@ -78,15 +78,20 @@ function doRegister() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				document.getElementById("registerResult").innerHTML = xhr.response;
 
-				userId = body.id;
-				firstName = body.firstName;
-				lastName = body.lastName;
-				saveCookie();
-				document.getElementById("registerResult").innerHTML = `Complete`;
+				let jsonObject = JSON.parse(xhr.responseText);
+	
+				alert( jsonObject.error );
+				
+//				document.getElementById("registerResult").innerHTML = xhr.response;
 
-				window.location.href = "landing.html";
+//				userId = body.id;
+//				firstName = body.firstName;
+//				lastName = body.lastName;
+//				saveCookie();
+//				document.getElementById("registerResult").innerHTML = `Complete`;
+
+//				window.location.href = "landing.html";
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
