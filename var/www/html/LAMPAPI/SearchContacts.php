@@ -3,41 +3,28 @@
 
 	$inData = getRequestInfo();
 	
-	$searchResults = "";
-	$searchCount = 0;
+    $firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+	$phone = $inData["phone"];
+	$email = $inData["email"];
+    $ID = $inData["ID"];
 
     // connect to database
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-
+	
     // connection error
-	if ($conn->connect_error) 
+    if ($conn->connect_error)
 		returnWithError( $conn->connect_error );
-	else
+	
+    // update contact
+    else 
 	{
-		// find search results based on input parameter
-		$stmt = $conn->prepare("select * from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?) and UserID=?");
-		$searchParameter = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ssssi", $searchParameter, $searchParameter, $searchParameter, $searchParameter, $inData["userId"]);
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? WHERE ID=?");
+		$stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $ID);
 		$stmt->execute();
-		$result = $stmt->get_result();
-		
-		// add each result to a single string
-		while($row = $result->fetch_assoc())
-		{
-			if( $searchCount > 0 )
-				$searchResults .= ",";
-			
-			$searchResults .= '{"id":"' . $row["ID"] . '","firstName":"' . $row["FirstName"] . '","lastName":"' . $row["LastName"] . '","phone":"' . $row["Phone"] . '","email":"' . $row["Email"] . '"}';
-			$searchCount++;
-		}
-		
-		if( $searchCount == 0 )
-			returnWithError( "No Records Found" );
-		else
-			returnWithInfo( $searchResults );
-		
 		$stmt->close();
 		$conn->close();
+		returnWithError("");
 	}
 
 	function getRequestInfo()
@@ -54,12 +41,6 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
-	
-	function returnWithInfo( $searchResults )
-	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
