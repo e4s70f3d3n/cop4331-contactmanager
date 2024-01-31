@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Cosmic Contacts</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap connecttion!!! DO NOT DELETE-->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/landing.css">
+    <script src="js/landing.js"></script>
+    <script src="js/contacts.js"></script>
+</head>
+
+    <body onload="unhideMain();">
+        <div class="verticalTabHeader">
+            <button class="verticalTabLink" onclick="JavaScript:selectTab('Home');" id="defaultOpen">
+                Home
+            </button>
+            <button class="verticalTabLink" onclick="JavaScript:selectTab('Contacts');">
+                Contacts
+            </button>
+            <button class="verticalTabLink" onclick="JavaScript:selectTab('Account Recovery');">
+                Account Recovery
+            </button>
+            <button class="verticalTabLink" onclick="JavaScript:selectTab('About Us')">
+                About Us
+            </button>
+            <button class="verticalTabLink" onclick="JavaScript:selectTab('Logout');">
+                Logout
+            </button>
+            <script>
+                document.getElementById("defaultOpen").click();
+            </script>
+
+        </div>
+
+        <div id="Home" class="tabContent">
+            <h1> Welcome to Cosmic Contacts.</h1>
+            <p>Put something here.</p>
+        </div>
+
+        <div id="Contacts" class="tabContent">
+            <h3> Contacts </h3>
+            <table class="table" id="contactsTable">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="Account Recovery" class="tabContent">
+            <h3> Account Recovery </h3>
+            <p>This page probably won't ever work</p>
+        </div>
+
+        <div id="About Us" class="tabContent">
+            <h3> About Us </h3>
+            <p>I will be placing a contacts table in here.</p>
+        </div>
+
+        <div id="Logout" class="tabContent">
+            <h3> Logout </h3>
+            <p>This button will call the JavaScript function to logout, and then, echo a message
+                indicating that user x was successfully logged out of Cosmic Contacts. </p>
+        </div>
+
+    </body>
+</html>
