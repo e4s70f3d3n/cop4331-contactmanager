@@ -14,7 +14,7 @@ function doLogin() {
 	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
-//	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
@@ -33,8 +33,6 @@ function doLogin() {
 
 				if (userId < 1) {
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					document.getElementById("loginResult").style.visibility = "visble";
-
 					return;
 				}
 
@@ -80,18 +78,20 @@ function doRegister() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 
 				let jsonObject = JSON.parse(xhr.responseText);
-	
-				alert( jsonObject.error );
-				
-//				document.getElementById("registerResult").innerHTML = xhr.response;
 
-//				userId = body.id;
-//				firstName = body.firstName;
-//				lastName = body.lastName;
-//				saveCookie();
-//				document.getElementById("registerResult").innerHTML = `Complete`;
+				//if there is an error, send an alert
+				if (jsonObject.error){
+					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
+					return;
+				}
 
-//				window.location.href = "landing.html";
+				userId = body.id;
+				firstName = body.firstName;
+				lastName = body.lastName;
+				saveCookie();
+				document.getElementById("registerResult").innerHTML = `Complete`;
+
+				window.location.href = "landing.html";
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
