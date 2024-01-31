@@ -19,30 +19,9 @@
     // update contact
     else 
 	{
-        if ($firstName && $firstName != "")
-        {
-            $stmt = $conn->prepare("UPDATE Contacts SET FirstName=? WHERE ID=?");
-            $stmt->bind_param("si", $firstName, $ID);
-            $stmt->execute();
-        }
-        if ($lastName && $lastName != "")
-        {
-            $stmt = $conn->prepare("UPDATE Contacts SET LastName=? WHERE ID=?");
-            $stmt->bind_param("si", $lastName, $ID);
-            $stmt->execute();
-        }
-        if ($phone && $phone != "")
-        {
-            $stmt = $conn->prepare("UPDATE Contacts SET Phone=? WHERE ID=?");
-            $stmt->bind_param("si", $phone, $ID);
-            $stmt->execute();
-        }
-        if ($email && $email != "")
-        {
-            $stmt = $conn->prepare("UPDATE Contacts SET Email=? WHERE ID=?");
-            $stmt->bind_param("si", $email, $ID);
-            $stmt->execute();
-        }
+        $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? WHERE ID=?");
+		$stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $ID);
+		$stmt->execute();
 		$stmt->close();
 		$conn->close();
 		returnWithError("");
