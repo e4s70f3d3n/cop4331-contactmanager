@@ -77,27 +77,23 @@ function doRegister() {
 
 	try {
 		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				document.getElementById("registerResult").innerHTML = xhr.response;
 
-			xhr.onreadystatechange = function () {
+				userId = body.id;
+				firstName = body.firstName;
+				lastName = body.lastName;
+				saveCookie();
+				document.getElementById("registerResult").innerHTML = `Complete`;
 
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					document.getElementById("registerResult").innerHTML = xhr.response;
-			
-					userId = jsonObject.id;
-					firstName = jsonObject.firstName;
-					lastName = jsonObject.lastName;
-					saveCookie();
-
-					window.location.href = "landing.html";
-				}
-				else {
-					document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
-					return;
-				}
+				window.location.href = "landing.html";
 			}
-			xhr.send(body);
-			
+			else {
+				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				return;
+			}
 		};
+		xhr.send(body);
 	} catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
