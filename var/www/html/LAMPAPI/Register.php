@@ -17,7 +17,6 @@
 	
 	else 
 	{
-
 		// check if user already exists
 		$stmt = $conn->prepare("SELECT Login FROM Users");
 		$stmt->execute();

@@ -14,7 +14,7 @@ function doLogin() {
 	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
-	document.getElementById("loginResult").innerHTML = "";
+//	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
@@ -93,7 +93,8 @@ function doRegister() {
 				saveCookie();
 				document.getElementById("registerResult").innerHTML = `Complete`;
 
-				window.location.href = "landing.html";
+
+      	window.location.href = "landing.html";
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
