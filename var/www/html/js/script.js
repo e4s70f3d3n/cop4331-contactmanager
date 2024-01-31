@@ -74,78 +74,34 @@ function doRegister() {
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8");
-	
+
 	try {
 		xhr.onreadystatechange = function () {
 
+			xhr.onreadystatechange = function () {
 
-            if (xhr.readyState == 4 && xhr.status == 200) {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					document.getElementById("registerResult").innerHTML = xhr.response;
+			
+					userId = jsonObject.id;
+					firstName = jsonObject.firstName;
+					lastName = jsonObject.lastName;
+					saveCookie();
 
-                let jsonObject = JSON.parse(xhr.responseText);
-                userId = jsonObject.id;
-                document.getElementById("registerResult").innerHTML = "Complete";
-                firstName = jsonObject.firstName;
-                lastName = jsonObject.lastName;
-                saveCookie();
-				
-                window.location.href = "landing.html";
-            }
-
-			else{
-				//window.location.href = "landing.html";
-                document.getElementById("registerResult").innerHTML = `Error: ${xhr.status}: ${xhr.responseText}`;
-                return false;
-            }
-        };
-
-		xhr.send(body);
+					window.location.href = "landing.html";
+				}
+				else {
+					document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+					return;
+				}
+			}
+			xhr.send(body);
+			
+		};
 	} catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-	
-	/*try
-	{
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;	
-				document.getElementById("registerResult").innerHTML = "User created";
-					return;
-			}
-		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
 
-				saveCookie();
-	
-				window.location.href = "color.html";
-			};
-	}
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("registerResult").innerHTML = err.message;
-	}
-	*/
-	////////
-	/*
-	xhr.onreadystatechange = function(){
-
-		if(xhr.readyState == 4 && xhr.status == 200){
-			document.getElementById("registerResult").innerHTML = xhr.response;
-			//saveCookie();
-			//window.open("http://cop4331-15.xyz/");
-			//window.close();
-		}
-		else{
-			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
-			return;
-		}
-	}
-	xhr.send(body);
-	*/
 }
 
 function saveCookie() {
