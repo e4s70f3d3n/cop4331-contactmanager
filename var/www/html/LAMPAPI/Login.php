@@ -8,7 +8,7 @@
 	$lastName = "";
 
 	// connect to database
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
+	$conn = new mysqli("localhost", "RickL", "COP4331", "COP4331");
 	
 	// connection error
 	if( $conn->connect_error ) 

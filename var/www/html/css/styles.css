@@ -149,13 +149,14 @@ p {
 
 input {
     font-family: 'Magica';
-    font-size: px;
+    font-size: 20px;
     max-width: 450px;
     max-height: 60px;
     border: 3px solid plum;
     border-radius: 5px;
     padding-left: 1%;
     text-align: left;
+    padding-right: 40px;
 
 }
 
@@ -202,4 +203,14 @@ input {
 
 .show-password:hover {
     color: #212529;
+}
+
+
+.criteria-listed.checked {
+    opacity: 0.5;
+}
+
+.criteria-listed.checked::before {
+    content: '\f00c';
+    color: lawngreen;
 }
