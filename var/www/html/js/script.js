@@ -79,7 +79,7 @@ function doRegister() {
 		xhr.onreadystatechange = function () {
 
 
-            if (this.readyState == 4 && this.status == 200) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
 
                 let jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
@@ -87,20 +87,65 @@ function doRegister() {
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
                 saveCookie();
+				
                 window.location.href = "landing.html";
             }
 
 			else{
 				//window.location.href = "landing.html";
-                document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;;
+                document.getElementById("registerResult").innerHTML = `Error: ${xhr.status}: ${xhr.responseText}`;
                 return false;
             }
         };
+
 		xhr.send(body);
 	} catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
-		return;
 	}
+	
+	/*try
+	{
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;	
+				document.getElementById("registerResult").innerHTML = "User created";
+					return;
+			}
+		
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
+	
+				window.location.href = "color.html";
+			};
+	}
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+	*/
+	////////
+	/*
+	xhr.onreadystatechange = function(){
+
+		if(xhr.readyState == 4 && xhr.status == 200){
+			document.getElementById("registerResult").innerHTML = xhr.response;
+			//saveCookie();
+			//window.open("http://cop4331-15.xyz/");
+			//window.close();
+		}
+		else{
+			document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+			return;
+		}
+	}
+	xhr.send(body);
+	*/
 }
 
 function saveCookie() {
