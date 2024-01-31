@@ -80,18 +80,21 @@ function doRegister() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 
 				let jsonObject = JSON.parse(xhr.responseText);
-	
-				alert( jsonObject.error );
-				
-//				document.getElementById("registerResult").innerHTML = xhr.response;
 
-//				userId = body.id;
-//				firstName = body.firstName;
-//				lastName = body.lastName;
-//				saveCookie();
-//				document.getElementById("registerResult").innerHTML = `Complete`;
+				//if there is an error, send an alert
+				if (jsonObject.error){
+					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
+					return;
+				}
 
-//				window.location.href = "landing.html";
+				userId = body.id;
+				firstName = body.firstName;
+				lastName = body.lastName;
+				saveCookie();
+				document.getElementById("registerResult").innerHTML = `Complete`;
+
+
+      	window.location.href = "landing.html";
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
