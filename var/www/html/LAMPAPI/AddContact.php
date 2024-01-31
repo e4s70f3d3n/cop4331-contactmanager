@@ -1,15 +1,16 @@
 
 <?php
 
-    $inData = getRequestInfo();
+	$inData = getRequestInfo();
 	
-    $name = $inData["name"];
-    $phone = $inData["phone"];
-    $email = $inData["email"];
+    $firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+	$phone = $inData["phone"];
+	$email = $inData["email"];
     $userId = $inData["userId"];
 
     // connect to database
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	
     // connection error
     if ($conn->connect_error)
@@ -18,8 +19,8 @@
     // add contact
     else 
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
-		$stmt->bind_param("sisi", $name, $phone, $email, $userId);
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email, UserID) VALUES(?,?,?,?,?)");
+		$stmt->bind_param("ssisi", $firstName, $lastName, $phone, $email, $userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
