@@ -7,7 +7,7 @@
 	$lastName = $inData["lastName"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
-    $userId = $inData["userId"];
+    $ID = $inData["ID"];
 
     // connect to database
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -19,9 +19,30 @@
     // update contact
     else 
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? WHERE UserID=?");
-		$stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $userId);
-		$stmt->execute();
+        if ($firstName && $firstName != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET FirstName=? WHERE ID=?");
+            $stmt->bind_param("si", $firstName, $ID);
+            $stmt->execute();
+        }
+        if ($lastName && $lastName != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET LastName=? WHERE ID=?");
+            $stmt->bind_param("si", $lastName, $ID);
+            $stmt->execute();
+        }
+        if ($phone && $phone != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET Phone=? WHERE ID=?");
+            $stmt->bind_param("si", $phone, $ID);
+            $stmt->execute();
+        }
+        if ($email && $email != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET Email=? WHERE ID=?");
+            $stmt->bind_param("si", $email, $ID);
+            $stmt->execute();
+        }
 		$stmt->close();
 		$conn->close();
 		returnWithError("");
