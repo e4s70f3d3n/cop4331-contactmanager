@@ -10,8 +10,8 @@ function doLogin() {
 	firstName = "";
 	lastName = "";
 
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
+	let login = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
@@ -78,7 +78,14 @@ function doRegister() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				document.getElementById("registerResult").innerHTML = xhr.response;
+
+				let jsonObject = JSON.parse(xhr.responseText);
+
+				//if there is an error, send an alert
+				if (jsonObject.error){
+					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
+					return;
+				}
 
 				userId = body.id;
 				firstName = body.firstName;
