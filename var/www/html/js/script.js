@@ -14,7 +14,7 @@ function doLogin() {
 	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
-    document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
@@ -41,7 +41,7 @@ function doLogin() {
 
 				saveCookie();
 
-				window.location.href = "landing.html";
+				window.location.href = "contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -92,7 +92,7 @@ function doRegister() {
 				document.getElementById("registerResult").innerHTML = `Complete`;
 
 
-				window.location.href = "landing.html";
+				window.location.href = "contacts.html";
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
@@ -196,6 +196,8 @@ function doSearch() {
 }
 
 function deleteContact(index) {
+	//using the row index, find the matching data in the DB
+	//delete the db, and run search contacts again, it should disappear
 
 }
 
@@ -204,15 +206,14 @@ function editContact(index) {
 	//get current row
 
 	document.getElementById("p1").innerHTML = `row ${index}`
-	//find userID
-	//open a container or switch the table to be editable
-	//listen for submit or cancel
+	//find userID -> readCookies 
+	//open a container or switch the table to be editable -> needs to be adjusted, but it'sthere
+	//listen for submit (saveNewContact) or cancel
 }
 
 function addContact() {
 	//open div to add a contact 
 	document.getElementById("addContainer").style.visibility = "visible";
-	//open 
 }
 
 function cancelAdd() {
@@ -220,5 +221,49 @@ function cancelAdd() {
 }
 
 function saveNewContact() {
-	document.getElementById("p1").innerHTML = "Hey there"
+	let firstName = document.getElementById("addFirstName").value;
+	let lastName = document.getElementById("addLastName").value;
+	let phoneNumber = document.getElementById("addPhone").value;
+	let email = document.getElementById("addEmail").value;
+
+	let url = urlBase + '/AddContact.' + extension;
+	const body = JSON.stringify({
+		firstName: firstName,
+		lastName: lastName,
+		phone: phoneNumber,
+		email: email,
+		userId: userId
+	});
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObj = JSON.parse(xhr.responseText);
+				//error check
+
+				if (jsonObj.error) {
+					alert(jsonObj.error);
+					return;
+				}
+
+				document.getElementById("addContactResult").innerHTML = "complete!";
+			}
+
+			else {
+				document.getElementById("addContactResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				return;
+			}
+		};
+		xhr.send(body);
+	}
+	catch (err) {
+		document.getElementById("addContactResult").innerHTML = err.message;
+
+	}
+
 }
+
