@@ -79,8 +79,9 @@ function doRegister() {
 
 				let jsonObject = JSON.parse(xhr.responseText);
 
-				//if there is an error, change register result and return 
-				if (jsonObject.error) {
+				//if there is an error, send an alert
+				if (jsonObject.error){
+
 					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
 					return;
 				}
@@ -93,6 +94,7 @@ function doRegister() {
 
 
 				window.location.href = "contacts.html";
+
 			}
 			else {
 				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
