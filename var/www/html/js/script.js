@@ -14,7 +14,7 @@ function doLogin() {
 	let password = document.getElementById("password").value;
 	//	var hash = md5( password );
 
-    document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
@@ -79,8 +79,9 @@ function doRegister() {
 
 				let jsonObject = JSON.parse(xhr.responseText);
 
-				//if there is an error, change register result and return 
-				if (jsonObject.error) {
+				//if there is an error, send an alert
+				if (jsonObject.error){
+
 					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
 					return;
 				}
@@ -90,7 +91,6 @@ function doRegister() {
 				lastName = body.lastName;
 				saveCookie();
 				document.getElementById("registerResult").innerHTML = `Complete`;
-
 
 				window.location.href = "landing.html";
 			}
