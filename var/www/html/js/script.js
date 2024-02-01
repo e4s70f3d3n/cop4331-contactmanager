@@ -81,6 +81,7 @@ function doRegister() {
 
 				//if there is an error, send an alert
 				if (jsonObject.error){
+
 					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
 					return;
 				}
@@ -134,7 +135,7 @@ function readCookie() {
 		window.location.href = "index.html";
 	}
 	else {
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
 }
 
@@ -144,4 +145,80 @@ function doLogout() {
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
+}
+
+function doSearch() {
+	let search = document.getElementById("searchBar").value;
+
+	let jsonPayload = JSON.stringify({
+		search: search,
+		userId: userId
+	});
+
+	let url = urlBase + '/SearchContacts.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 & this.status == 200) {
+				jsonObject = JSON.parse(xhr.responseText);
+
+				if (jsonObject.error) {
+					alert(jsonObject.error);
+					return;
+				}
+
+				document.getElementById("p1").innerHTML = "Success" + jsonObject.results;
+
+				//add to table
+				let text = "<table border='1'>"
+				for (let i = 0; i < jsonObject.results.length; i++) {
+					ids[i] = jsonObject.results[i].ID
+					text += "<tr id='row" + i + "'>"
+					text += "<td id='first_Name" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
+					text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
+					text += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
+					text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
+					text += "<td>" +
+						"<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='editContact(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
+						"<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='updateContact(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
+						"<button type='button' onclick='deleteContact(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
+					text += "<tr/>"
+				}
+			}
+		};
+	}
+	catch (err) {
+		return;
+	}
+}
+
+function deleteContact(index) {
+
+}
+
+
+function editContact(index) {
+	//get current row
+
+	document.getElementById("p1").innerHTML = `row ${index}`
+	//find userID
+	//open a container or switch the table to be editable
+	//listen for submit or cancel
+}
+
+function addContact() {
+	//open div to add a contact 
+	document.getElementById("addContainer").style.visibility = "visible";
+	//open 
+}
+
+function cancelAdd() {
+	document.getElementById("addContainer").style.visibility = "collapse";
+}
+
+function saveNewContact() {
+	document.getElementById("p1").innerHTML = "Hey there"
 }
