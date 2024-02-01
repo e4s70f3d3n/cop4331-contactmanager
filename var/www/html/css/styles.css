@@ -261,3 +261,17 @@ tbody {
     width: 866px;
     height: 381px;
 }
+
+.menuButton{
+    border: none;
+    background: none;
+    font-size: 20px;
+    color: white;
+    transition-duration: 2s;
+}
+
+.menuButton:hover{
+    transform: translateY(-20px);
+    cursor: pointer;
+    color:#212529;
+}
