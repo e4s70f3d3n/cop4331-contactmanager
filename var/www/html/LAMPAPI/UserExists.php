@@ -19,7 +19,7 @@
 		$result = $stmt->get_result();
 
 		if ( $row = $result->fetch_assoc() )
-            returnWithError("");
+            returnWithError($row['ID'], "");
 		else
 			returnWithError("No Records Found");
 
@@ -38,9 +38,9 @@
 		echo $obj;
 	}
 	
-	function returnWithError( $err )
+	function returnWithError( $id, $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"id":' . $id . ',"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
