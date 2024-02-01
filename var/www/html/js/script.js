@@ -224,12 +224,23 @@ function deleteContact(index) {
 
 
 function editContact(index) {
-	//get current row
+	document.getElementById("edit_button" + index).style.display = "none";
+    document.getElementById("save_button" + index).style.display = "inline-block";
 
-	document.getElementById("p1").innerHTML = `row ${index}`
-	//find userID -> readCookies 
-	//open a container or switch the table to be editable -> needs to be adjusted, but it'sthere
-	//listen for submit (saveNewContact) or cancel
+	var firstNameI = document.getElementById("first_Name" + index);
+    var lastNameI = document.getElementById("last_Name" + index);
+    var email = document.getElementById("email" + index);
+    var phone = document.getElementById("phone" + index);
+
+	var fname_data = firstNameI.innerText;
+    var lname_data = lastNameI.innerText;
+    var email_data = email.innerText;
+    var phone_data = phone.innerText;
+
+	firstNameI.innerHTML = "<input type='text' id='fname_text" + index + "' value='" + fname_data + "'>";
+    lastNameI.innerHTML = "<input type='text' id='lname_text" + index + "' value='" + lname_data + "'>";
+    email.innerHTML = "<input type='text' id='email_text" + index + "' value='" + email_data + "'>";
+    phone.innerHTML = "<input type='text' id='phone_text" + index + "' value='" + phone_data + "'>";
 }
 
 
