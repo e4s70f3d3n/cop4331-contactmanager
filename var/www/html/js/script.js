@@ -243,6 +243,52 @@ function editContact(index) {
     phone.innerHTML = "<input type='text' id='phone_text" + index + "' value='" + phone_data + "'>";
 }
 
+function updateContact(index) {
+	var fname_val = document.getElementById("fname_text" + index).value;
+    var lname_val = document.getElementById("lname_text" + index).value;
+    var email_val = document.getElementById("email_text" + index).value;
+    var phone_val = document.getElementById("phone_text" + index).value;
+    var id_val = ids[index]
+
+	document.getElementById("first_Name" + index).innerHTML = fname_val;
+    document.getElementById("last_Name" + index).innerHTML = lname_val;
+    document.getElementById("email" + index).innerHTML = email_val;
+    document.getElementById("phone" + index).innerHTML = phone_val;
+
+	document.getElementById("edit_button" + index).style.display = "inline-block";
+    document.getElementById("save_button" + index).style.display = "none";
+
+	let tmp = {
+		
+		firstName:fname_val,
+		lastName:lname_val,
+		phone:phone_val,
+		email:email_val,
+		ID: userId
+	};
+
+	let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/UpdateContact.' + extension;
+	let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState == 4 && this.status == 200) {
+                doSearch();
+            }
+
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        console.log(err.message);
+    }
+
+}
+
 
 function addContact() {
 	//open div to add a contact 
