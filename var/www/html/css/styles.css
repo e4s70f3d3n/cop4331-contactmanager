@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: "Kaoly";
-    size-adjust: 200%;
+    size-adjust: 150%;
     src:
         local("Kaoly"),
         url("fonts/Kaoly.ttf") format("truetype");
@@ -63,8 +63,8 @@
 
 h1 {
     font-family: 'Kaoly';
+
     animation: 3s ease-out 0s 1 slideInFromAbove;
-    font-size: 100px;
     padding: 10%;
 }
 
@@ -78,9 +78,15 @@ html {
     width: 100%;
 }
 
+
+
 body {
-    background: linear-gradient(180deg, rgba(113, 97, 239, 1) 0%, rgba(183, 156, 237, 1) 50%, rgba(222, 192, 241, 1) 100%);
+    width: 100%;
+    height: 100%;
+    background-image: url(/var/www/html/images/purple_saturn.svg), url(/var/www/html/images/Vector.svg), linear-gradient(180deg, rgba(113, 97, 239, 1) 0%, rgba(183, 156, 237, 1) 50%, rgba(222, 192, 241, 1) 100%);
     background-attachment: fixed;
+    background-position: bottom left, bottom left;
+    background-repeat: no-repeat, no-repeat, no-repeat;
     animation: 3s ease-out 0s 1 slideInFromAbove;
 }
 
@@ -204,4 +210,50 @@ input {
 
 .show-password:hover {
     color: #212529;
+}
+
+.searchBar {
+    width: 792px;
+    height: 42px;
+    margin: 2%;
+}
+
+.searchButton {
+    width: 86px;
+    height: 50px;
+    margin: 2%;
+}
+
+.addButton {
+    width: 86px;
+    height: 50px;
+    margin: 2%;
+}
+
+table,
+tbody {
+    width: 100%;
+    font-family: 'Magica';
+    border: 50px, solid;
+}
+
+th,
+td {
+    border: 10px, solid;
+    border-radius: 3px;
+    border-color: blue;
+}
+
+thead {
+    background: blue;
+}
+
+tbody {
+    background: rgb(183, 156, 237, .50);
+    color: white;
+}
+
+#headerIndex {
+    width: 866px;
+    height: 381px;
 }
