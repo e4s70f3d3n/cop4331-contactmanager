@@ -21,7 +21,7 @@
 		if ( $row = $result->fetch_assoc() )
             returnWithError($row['ID'], "");
 		else
-			returnWithError("No Records Found");
+			returnWithError("0", "No Records Found");
 
 		$stmt->close();
 		$conn->close();
