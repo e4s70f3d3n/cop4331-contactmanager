@@ -16,6 +16,7 @@
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/md5.js"></script>
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/passwordReq.css">
         <script src='js/pwdValidation.js'></script>
 
     </head>
@@ -51,7 +52,7 @@
                         <label>Password</label>
                         <br />
                         <input type="password" name="password" id="password"
-                            class="password"
+                            class="password" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}"
                             placeholder="Password" required />
 
                         <span onclick="togglePwd()">
@@ -60,24 +61,25 @@
                         <br />
 
                         <div class="row justify-content-center"
-                            style="padding: 2.5%">
+                            >
                             <div class="col">
                                 <h3 class="checklist-title">Password is</h3>
                                 <br />
                             </div>
                         </div>
+
                         <div class="row justify-content-center" style="padding-bottom: 5%;">
                             <div class="col-3">
                                 <ul class="password-criteria list-group">
-                                    <li class="criteria-listed">At least 8
+                                    <li id="passLen" style="margin-bottom: 2.5%" class="invalid">At least 8
                                         characters</li>
-                                    <li class="criteria-listed">At least 1
+                                    <li id="passUpper" style="margin-bottom: 2.5%" class="invalid">At least 1
                                         upper-case letter</li>
-                                    <li class="criteria-listed">At least 1
+                                    <li id="passLower" style="margin-bottom: 2.5%" class="invalid">At least 1
                                         lower-case letter</li>
-                                    <li class="criteria-listed">At least 1
+                                    <li id="passNum" style="margin-bottom: 2.5%" class="invalid">At least 1
                                         number</li>
-                                    <li class="criteria-listed">At least 1 special
+                                    <li id="passSpecial" style="margin-bottom: 2.5%" class="invalid">At least 1 special
                                         character</li>
                                 </ul>
                             </div>
@@ -85,6 +87,8 @@
 
                     </div>
                 </div>
+
+                <script type="text/javascript" src="js/passReq.js"></script>
 
                 <span class="text" style="color:rgb(203, 40, 4);" id="registerResult"></span>
 
