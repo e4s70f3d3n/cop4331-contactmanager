@@ -81,7 +81,7 @@ function doRegister() {
 				let jsonObject = JSON.parse(xhr.responseText);
 
 				//if there is an error, send an alert
-				if (jsonObject.error){
+				if (jsonObject.error) {
 
 					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
 					return;
@@ -139,6 +139,8 @@ function readCookie() {
 	}
 	else {
 		document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
+		//window.location.href = "contacts.html";
+
 	}
 }
 
@@ -169,28 +171,26 @@ function doSearch() {
 				jsonObject = JSON.parse(xhr.responseText);
 
 				if (jsonObject.error) {
-					alert(jsonObject.error);
+					//	alert(jsonObject.error);
 					return;
 				}
 
-				document.getElementById("p1").innerHTML = "Success" + jsonObject.results;
-
 				//add to table
-				let text = "<table border='1'>"
+				let text = "<table>"
 				for (let i = 0; i < jsonObject.results.length; i++) {
 					ids[i] = jsonObject.results[i].ID;
 					text += "<tr id='row" + i + "'>";
-					text += "<td id='first_Name" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
-					text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
-					text += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
-					text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
+					text += "<td><span id='first_Name" + i + "'>" + jsonObject.results[i].firstName + "</span></td>";
+					text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
+					text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
+					text += "<td id='email" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
 					text += "<td>" +
-						"<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='editContact(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
-						"<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='updateContact(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
-						"<button type='button' onclick='deleteContact(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
+						"<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='editContact(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "Edit" + "</button>" +
+						"<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='updateContact(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "Update" + "</button>" +
+						"<button type='button' onclick='deleteContact(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "Delete" + "</button>" + "</td>";
 					text += "<tr/>"
 				}
-				text += "</tbody>";
+				text += "</table>";
 				document.getElementById("contactBody").innerHTML = text
 			}
 		};
@@ -202,8 +202,23 @@ function doSearch() {
 }
 
 function deleteContact(index) {
-	//using the row index, find the matching data in the DB
-	//delete the db, and run search contacts again, it should disappear
+	//save the data
+	let id1 = `first_Name${index}`;
+	let id2 = `last_Name${index}`;
+	let id3 = `phone${index}`;
+	let id4 =`first_Name${index}`;
+	
+	let delFirst = document.getElementById(id1).value;
+	let delLast = document.getElementById(id2).value;
+	let delPhone = document.getElementById(id3).value;
+	let delEmail = document.getElementById(id4).value;
+	
+	let temp = delFirst + delLast + delPhone + delEmail
+	document.getElementById('p1').innerHTML = temp;
+	//load a popup confirming delete
+
+	//delete data
+
 
 }
 
@@ -216,6 +231,7 @@ function editContact(index) {
 	//open a container or switch the table to be editable -> needs to be adjusted, but it'sthere
 	//listen for submit (saveNewContact) or cancel
 }
+
 
 function addContact() {
 	//open div to add a contact 
