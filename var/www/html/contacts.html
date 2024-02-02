@@ -69,24 +69,35 @@
                         <button
                             class="addContactButton"
                             id="addContactButton"
-                            type="button"
-                            onclick="openPopup()">
+                            type="button">
                             Create New Contact
                         </button>
 
                         <div class="pop-up" id="pop-up">
-                            <div class="pop-up-content">
-                                <h1 style="color:mediumpurple">
-                                    This is a popup window.
-                                </h1>
-                                <p>We will add our contacts information here.</p>
-                                <button id="createContactButton" type="button">
-                                    Create New Contact
-                                </button>
-                            </div>
+                            <h1 style="color:mediumpurple">
+                                This is a popup window.
+                            </h1>
+                            <p>We will add our contacts information here.</p>
+                            <button id="createContactButton" type="button">
+                                Create New Contact
+                            </button>
                         </div>
 
-                        <script type="text/javascript" src="js/contacts.js"></script>
+                        <script>
+                            // Get the elements by their ID
+                            var popupLink = document.getElementById("addContactButton");
+                            var popupWindow = document.getElementById("pop-up");
+                            var closeButton = document.getElementById("createContactButton");
+                            // Show the pop-up window when the link is clicked
+                            popupLink.addEventListener("click", function(event) {
+                                event.preventDefault();
+                                popupWindow.style.display = "block";
+                            });
+                            // Hide the pop-up window when the close button is clicked
+                            closeButton.addEventListener("click", function() {
+                                popupWindow.style.display = "none";
+                            });
+                        </script>
 
                     </div>
                 </div>
