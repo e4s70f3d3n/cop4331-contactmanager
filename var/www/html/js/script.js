@@ -5,6 +5,7 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 let ids = []
+let passCheck = false;
 
 function doLogin() {
 	userId = 0;
@@ -206,13 +207,13 @@ function deleteContact(index) {
 	let id1 = `first_Name${index}`;
 	let id2 = `last_Name${index}`;
 	let id3 = `phone${index}`;
-	let id4 =`first_Name${index}`;
-	
+	let id4 = `first_Name${index}`;
+
 	let delFirst = document.getElementById(id1).value;
 	let delLast = document.getElementById(id2).value;
 	let delPhone = document.getElementById(id3).value;
 	let delEmail = document.getElementById(id4).value;
-	
+
 	let temp = delFirst + delLast + delPhone + delEmail
 	document.getElementById('p1').innerHTML = temp;
 	//load a popup confirming delete
@@ -347,4 +348,19 @@ function saveNewContact() {
 
 	}
 
+}
+
+function checkPassword() {
+	let initPassword = document.getElementById("password").value;
+	let checkPass = document.getElementById("checkPassInput").value;
+
+	if (initPassword !== checkPass) {
+		document.getElementById("checkPassResult").style.visibility = "visible";
+		document.getElementById("checkPassResult").innerHTML = "<br/>" + "Passwords much match!";
+		document.getElementById("checkPassResult").style.color = "red";
+	}
+	else {
+		document.getElementById("checkPassResult").innerHTML = "<br/>" + "Passowrds match";
+		passCheck = true;
+	}
 }
