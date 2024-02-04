@@ -51,51 +51,56 @@
 
                     <div class="row justify-content-center"
                         style="padding-top: 5%;">
+
                         <input class="searchBar" type="text"
                             placeholder="Search"
                             name="Search"
                             id="searchBar" oninput="doSearch()" />
 
-                        <button class="searchButton" type="submit"
-                            onclick="doSearch()">
+                        <button class="searchButton" type="submit" onclick="doSearch()">
                             Search
                         </button>
 
-                        <button id="newContactBtn" class="newContactBtn"
-                            onclick="addNewContact()">
+                        <!-- push button event that opens the dialogs box for the add contact window -->
+                        <button id="newContactBtn" class="newContactBtn" onclick="addNewContact()">
                             New Contact
                         </button>
 
                     </div>
 
-                    <!--Add Contact Dialog-->
                     <div class="row justify-content-center">
-                        <dialog id="createContactWindow"
-                            class="createContactWindow">
-                            <label>First Name</label>
-                            <input name="AddFName"
-                                placeholder="First Name" id="contactFirstName"
-                                required>
+
+                        <!-- dialog window that allows for a pop-up window to add
+                             new contact information -->
+                        <dialog class="createContactWindow" id="createContactWindow">
+                            <label class="text-left">
+                                First Name:
+                            </label>
+                            <input class="forename" name="AddFName" placeholder="First Name" id="contactFirstName" required>
                             <br>
-                            <label>Last Name</label>
-                            <input placeholder="Last Name"
-                                id="contactLastName" required>
+                            <label class="text-left">
+                                Last Name:
+                            </label>
+                            <input class="surname" placeholder="Last Name" id="contactLastName" required>
                             <br>
-                            <label>Phone Number</label>
-                            <input placeholder="Phone Number"
-                                id="contactPhone" required>
+                            <label class="text-left">
+                                Phone Number:
+                            </label>
+                            <input class="phoneNumber" placeholder="Phone Number" id="contactPhone" required>
                             <br>
-                            <label>Email</label>
-                            <input  placeholder="Email"
-                                id="contactEmail" required>
+                            <label class="text-left">
+                                Email:
+                            </label>
+                            <input class="email" placeholder="Email" id="contactEmail" required>
                             <br>
-                            <button  id="addNewContact"
-                                type="button" onclick="saveNewContact()">
+
+                            <!-- push button event that saves a new contact from within the dialog box -->
+                            <button id="addNewContact" type="button" onclick="doSearch()">
                                 Create New Contact
                             </button>
-                            <button
-                                id="showCreateContactWindow"
-                                type="button" onclick="closeContactWindow()">
+
+                            <!-- push button event that closes the dialog box -->
+                            <button id="showCreateContactWindow" type="button" onclick="closeContactWindow()">
                                 Cancel
                             </button>
                         </dialog>

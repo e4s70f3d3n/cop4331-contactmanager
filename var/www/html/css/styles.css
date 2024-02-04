@@ -309,20 +309,21 @@ input {
     padding-top: 5%;
     padding-bottom: 5%;
 }
-.table,
-tbody {
+
+.table, tbody {
     width: 100%;
     font-family: 'Magica';
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
+    z-index: -5;
 }
 
-th,
-td {
+th, td {
     border: 10px, solid;
     border-radius: 3px;
     border-color: #7161EF;
+    z-index: -5;
 }
 
 thead {
@@ -385,4 +386,23 @@ tbody {
     -webkit-text-stroke-color: #EFD9CE;
     paint-order: stroke fill;
     transform: translateY(-10px);
+}
+
+.createContactWindow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: white;
+    border: 1px solid black;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.text-left {
+    text-align: left;
+    padding-right: 20px;
 }
