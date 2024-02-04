@@ -303,16 +303,6 @@ function updateContact(index) {
 
 }
 
-
-function addContact() {
-	//open div to add a contact 
-	document.getElementById("addContainer").style.visibility = "visible";
-}
-
-function cancelAdd() {
-	document.getElementById("addContainer").style.visibility = "collapse";
-}
-
 function saveNewContact() {
 	let firstName = document.getElementById("contactFirstName").value;
 	let lastName = document.getElementById("contactLastName").value;
@@ -355,11 +345,18 @@ function saveNewContact() {
 			}
 		};
 		xhr.send(body);
+		
+		document.getElementById('addDiv').style.height = "0px";
 	}
+	
 	catch (err) {
 		document.getElementById("addContactResult").innerHTML = err.message;
 
 	}
+
+	dialog.close();
+	document.getElementById('contactsTable').style.visibility = "visible";
+
 
 }
 

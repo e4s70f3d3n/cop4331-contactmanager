@@ -1,6 +1,5 @@
 @font-face {
     font-family: "Magica";
-    letter-spacing: 50px;
     src:
         local("Magica"),
         url("fonts/Magica.otf") format("opentype");
@@ -192,7 +191,6 @@ input {
     background: rgb(239, 217, 206, .5);
 }
 
-
 .checklist-title {
     font-size: 15px;
     margin-top: 2.5%;
@@ -328,21 +326,20 @@ input {
     padding-bottom: 5%;
 }
 
-
-.table, tbody {
+.table,
+tbody {
     width: 100%;
     font-family: 'Magica';
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
-    z-index: -5;
 }
 
-th, td {
+th,
+td {
     border: 10px, solid;
     border-radius: 3px;
     border-color: #7161EF;
-    z-index: -5;
 }
 
 thead {
@@ -409,9 +406,15 @@ tbody {
 
 .createContactWindow {
     position: absolute;
+    width: 400px;
+    height: 200px;
     background: white;
     border: 1px solid black;
     margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 10;
 }
 
