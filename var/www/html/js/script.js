@@ -212,31 +212,31 @@ function deleteContact(index) {
 		document.getElementById("row" + index + "").outerHTML = "";
 
 		let tmp = {
-			ID:ids[index]
+			ID: ids[index]
 		};
 
-		let	jsonPayload = JSON.stringify(tmp);
+		let jsonPayload = JSON.stringify(tmp);
 
 		let url = urlBase + '/Delete.' + extension;
 
 		let xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-        try {
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		try {
+			xhr.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
 
 					console.log("DELETED");
-                    doSearch();
-                }
-            };
-            xhr.send(jsonPayload);
-        } catch (err) {
-            console.log(err.message);
-        }
+					doSearch();
+				}
+			};
+			xhr.send(jsonPayload);
+		} catch (err) {
+			console.log(err.message);
+		}
 	};
 }
-
+f
 function editContact(index) {
 	document.getElementById("edit_button" + index).style.display = "none";
 	document.getElementById("save_button" + index).style.display = "inline-block";
@@ -314,10 +314,10 @@ function cancelAdd() {
 }
 
 function saveNewContact() {
-	let firstName = document.getElementById("addFirstName").value;
-	let lastName = document.getElementById("addLastName").value;
-	let phoneNumber = document.getElementById("addPhone").value;
-	let email = document.getElementById("addEmail").value;
+	let firstName = document.getElementById("contactFirstName").value;
+	let lastName = document.getElementById("contactLastName").value;
+	let phoneNumber = document.getElementById("contactPhone").value;
+	let email = document.getElementById("contactEmail").value;
 
 
 	const body = JSON.stringify({
