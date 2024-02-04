@@ -1,6 +1,5 @@
 @font-face {
     font-family: "Magica";
-    letter-spacing: 50px;
     src:
         local("Magica"),
         url("fonts/Magica.otf") format("opentype");
@@ -336,10 +335,6 @@ tbody {
     border-color: #7161EF;
 }
 
-table{
-    z-index: -2;
-}
-
 th,
 td {
     border: 10px, solid;
@@ -411,9 +406,15 @@ tbody {
 
 .createContactWindow {
     position: absolute;
+    width: 400px;
+    height: 200px;
     background: white;
     border: 1px solid black;
     margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 10;
 }
 
