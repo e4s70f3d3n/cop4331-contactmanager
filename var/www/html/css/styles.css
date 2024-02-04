@@ -403,3 +403,54 @@ tbody {
     paint-order: stroke fill;
     transform: translateY(-10px);
 }
+
+.createContactWindow {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    background: white;
+    border: 1px solid black;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.text-left {
+    text-align: left;
+    padding-right: 40px;
+}
+
+#contactFirstName {
+    text-align: left;
+}
+
+#contactLastName {
+    text-align: left;
+}
+
+#contactPhone {
+    text-align: left;
+}
+
+#contactEmail {
+    text-align: left;
+}
+
+#contactFirstNameLabel {
+    text-align: left;
+}
+
+#contactLastNameLabel {
+    text-align: left;
+}
+
+#contactPhoneLabel {
+    text-align: left;
+}
+
+#contactEmailLabel {
+    text-align: left;
+}

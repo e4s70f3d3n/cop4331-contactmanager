@@ -236,7 +236,7 @@ function deleteContact(index) {
 		}
 	};
 }
-
+f
 function editContact(index) {
 	document.getElementById("edit_button" + index).style.display = "none";
 	document.getElementById("save_button" + index).style.display = "inline-block";
@@ -264,34 +264,6 @@ function updateContact(index) {
 	var phone_val = document.getElementById("phone_text" + index).value;
 	var id_val = ids[index]
 
-	function editContact(index) {
-		document.getElementById("edit_button" + index).style.display = "none";
-		document.getElementById("save_button" + index).style.display = "inline-block";
-
-		var firstNameI = document.getElementById("first_Name" + index);
-		var lastNameI = document.getElementById("last_Name" + index);
-		var email = document.getElementById("email" + index);
-		var phone = document.getElementById("phone" + index);
-
-		var fname_data = firstNameI.innerText;
-		var lname_data = lastNameI.innerText;
-		var email_data = email.innerText;
-		var phone_data = phone.innerText;
-
-		firstNameI.innerHTML = "<input type='text' id='fname_text" + index + "' value='" + fname_data + "'>";
-		lastNameI.innerHTML = "<input type='text' id='lname_text" + index + "' value='" + lname_data + "'>";
-		email.innerHTML = "<input type='text' id='email_text" + index + "' value='" + email_data + "'>";
-		phone.innerHTML = "<input type='text' id='phone_text" + index + "' value='" + phone_data + "'>";
-	}
-}
-
-function updateContact(index) {
-	var fname_val = document.getElementById("fname_text" + index).value;
-	var lname_val = document.getElementById("lname_text" + index).value;
-	var email_val = document.getElementById("email_text" + index).value;
-	var phone_val = document.getElementById("phone_text" + index).value;
-	var id_val = ids[index]
-
 	document.getElementById("first_Name" + index).innerHTML = fname_val;
 	document.getElementById("last_Name" + index).innerHTML = lname_val;
 	document.getElementById("email" + index).innerHTML = email_val;
@@ -306,7 +278,7 @@ function updateContact(index) {
 		lastName: lname_val,
 		phone: phone_val,
 		email: email_val,
-		ID: userId
+		ID: id_val
 	};
 
 	let jsonPayload = JSON.stringify(tmp);
@@ -328,6 +300,7 @@ function updateContact(index) {
 	} catch (err) {
 		console.log(err.message);
 	}
+
 }
 
 
@@ -341,7 +314,7 @@ function cancelAdd() {
 }
 
 function saveNewContact() {
-	let firstName = document.getElementById("AddFName").value;
+	let firstName = document.getElementById("contactFirstName").value;
 	let lastName = document.getElementById("contactLastName").value;
 	let phoneNumber = document.getElementById("contactPhone").value;
 	let email = document.getElementById("contactEmail").value;
