@@ -191,6 +191,7 @@ input {
     background: rgb(239, 217, 206, .5);
 }
 
+
 .checklist-title {
     font-size: 15px;
     margin-top: 2.5%;
@@ -326,20 +327,21 @@ input {
     padding-bottom: 5%;
 }
 
-.table,
-tbody {
+
+.table, tbody {
     width: 100%;
     font-family: 'Magica';
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
+    z-index: -5;
 }
 
-th,
-td {
+th, td {
     border: 10px, solid;
     border-radius: 3px;
     border-color: #7161EF;
+    z-index: -5;
 }
 
 thead {
