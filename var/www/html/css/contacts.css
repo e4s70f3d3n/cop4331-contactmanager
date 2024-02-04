@@ -36,4 +36,13 @@ button:active {
     left: 0;
     z-index: 10;
     display: none;
-}
+
+
+.searchBar {
+    position: absolute;
+    align-self: center;
+    left: 50%;
+    top: 50%;
+    width: 792px;
+    height: 42px;
+    margin: 2%;

@@ -4,8 +4,7 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
-let ids = []
-let passCheck = false;
+const ids = []
 
 function doLogin() {
 	userId = 0;
@@ -179,16 +178,16 @@ function doSearch() {
 				//add to table
 				let text = "<table>"
 				for (let i = 0; i < jsonObject.results.length; i++) {
-					ids[i] = jsonObject.results[i].ID;
+					ids[i] = jsonObject.results[i].id;
 					text += "<tr id='row" + i + "'>";
 					text += "<td><span id='first_Name" + i + "'>" + jsonObject.results[i].firstName + "</span></td>";
 					text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
 					text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
 					text += "<td id='email" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
 					text += "<td>" +
-						"<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='editContact(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "Edit" + "</button>" +
-						"<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='updateContact(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "Update" + "</button>" +
-						"<button type='button' onclick='deleteContact(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "Delete" + "</button>" + "</td>";
+						"<button type='button' id='edit_button" + i + "' class='editButton' onclick='editContact(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "Edit" + "</button>" +
+						"<button type='button' id='save_button" + i + "' value='Save' class='saveButton' onclick='updateContact(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "Save" + "</button>" +
+						"<button type='button' onclick='deleteContact(" + i + ")' class='deleteButton'" + "<span class='glyphicon glyphicon-trash'></span> " + "Delete" + "</button>" + "</td>";
 					text += "<tr/>"
 				}
 				text += "</table>";
@@ -203,26 +202,67 @@ function doSearch() {
 }
 
 function deleteContact(index) {
-	//save the data
-	let id1 = `first_Name${index}`;
-	let id2 = `last_Name${index}`;
-	let id3 = `phone${index}`;
-	let id4 = `first_Name${index}`;
 
-	let delFirst = document.getElementById(id1).value;
-	let delLast = document.getElementById(id2).value;
-	let delPhone = document.getElementById(id3).value;
-	let delEmail = document.getElementById(id4).value;
+	var fname_val = document.getElementById("first_Name" + index).innerText;
+	var lname_val = document.getElementById("last_Name" + index).innerText;
+	let fname = fname_val.substring(0, fname_val.length);
+	let lname = lname_val.substring(0, lname_val.length);
+	let check = confirm('Are you sure you want to delete the following contact?: ' + fname + ' ' + lname);
+	if (check === true) {
+		document.getElementById("row" + index + "").outerHTML = "";
 
-	let temp = delFirst + delLast + delPhone + delEmail
-	document.getElementById('p1').innerHTML = temp;
-	//load a popup confirming delete
+		let tmp = {
+			ID:ids[index]
+		};
 
-	//delete data
+		let	jsonPayload = JSON.stringify(tmp);
 
+		let url = urlBase + '/Delete.' + extension;
 
+		let xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        try {
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+					console.log("DELETED");
+                    doSearch();
+                }
+            };
+            xhr.send(jsonPayload);
+        } catch (err) {
+            console.log(err.message);
+        }
+	};
 }
 
+function editContact(index) {
+	document.getElementById("edit_button" + index).style.display = "none";
+	document.getElementById("save_button" + index).style.display = "inline-block";
+
+	var firstNameI = document.getElementById("first_Name" + index);
+	var lastNameI = document.getElementById("last_Name" + index);
+	var email = document.getElementById("email" + index);
+	var phone = document.getElementById("phone" + index);
+
+	var fname_data = firstNameI.innerText;
+	var lname_data = lastNameI.innerText;
+	var email_data = email.innerText;
+	var phone_data = phone.innerText;
+
+	firstNameI.innerHTML = "<input type='text' id='fname_text" + index + "' value='" + fname_data + "'>";
+	lastNameI.innerHTML = "<input type='text' id='lname_text" + index + "' value='" + lname_data + "'>";
+	email.innerHTML = "<input type='text' id='email_text" + index + "' value='" + email_data + "'>";
+	phone.innerHTML = "<input type='text' id='phone_text" + index + "' value='" + phone_data + "'>";
+}
+
+function updateContact(index) {
+	var fname_val = document.getElementById("fname_text" + index).value;
+	var lname_val = document.getElementById("lname_text" + index).value;
+	var email_val = document.getElementById("email_text" + index).value;
+	var phone_val = document.getElementById("phone_text" + index).value;
+	var id_val = ids[index]
 
 function editContact(index) {
 	document.getElementById("edit_button" + index).style.display = "none";
@@ -287,7 +327,6 @@ function updateContact(index) {
     } catch (err) {
         console.log(err.message);
     }
-
 }
 
 
