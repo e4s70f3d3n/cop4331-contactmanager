@@ -10,132 +10,131 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous">
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/md5.js"></script>
-        <script src="js/contacts.js"></script>
         <link rel="stylesheet" href="css/styles.css">
     </head>
 
-    <body class="justify-content-between" style="height: 100%; width: 100%;">
+    <body style='height: 100%; width: 100%;'>
         <div class="container-fluid text-center">
 
-            <div class="row text-center justify-content-center"
-                style="margin-top: 8%; height: 100%; width: 50% ">
-                <ul class="col-6 nav flex-column">
-                    <li class="nav-item">
-                        <input type="button" class="logoutButton"
-                            onclick="doLogout()"
-                            value="Log Out" />
-                    </li>
+            <div class="row">
+                <!--Menu-->
+                <div class="col-md-2 text-center min-vh-100 menu_bar"
+                    style="padding: 10%">
+                    <ul class="nav justify-content-center flex-column">
+                        <li class="nav-item text-center">
+                            <input type="button" class="menuButton"
+                                onclick="doLogout()"
+                                value="Log Out" />
+                        </li>
 
-                    <li class="nav-item">
-                        <input type="button" class="menuButton"
-                            onclick="location.href('http://cop4331-15.xyz/about.html')"
-                            value="About Us" disabled />
-                    </li>
-                    <li class="nav-item">
-                        <input type="button" class="menuButton"
-                            onclick="location.href('http://cop4331-15.xyz/contacts.html')"
-                            value="Contacts" />
-                    
-                    </li>
+                        <li class="nav-item disabled">
+                            <input type="button" class="menuButton"
+                                onclick="location.href('http://cop4331-15.xyz/about.html')"
+                                value="About Us" disabled />
+                        </li>
+                        <li class="nav-item">
+                            <input type="button" class="menuButton"
+                                onclick="location.href('http://cop4331-15.xyz/contacts.html')"
+                                value="Contacts">
+                        </li>
 
-                </ul>
-            </div>
-
-            <div class="row flex-column">
-                <div class="col-12">
-
-                    <h1 class="h1" style="padding:0%">Welcome</h1>
-                    <h3 class="h3" id="f"></h3>
+                    </ul>
 
                 </div>
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-end">
+                <!-- Welcome Message-->
+                <div
+                    class="col-md-9 justify-content-center align-items-center">
+                    <h1 class="h1"
+                        style="padding: 0%; margin-top: 5%">Welcome</h1>
+                    <h1 class="h3" style="padding: 0%;" id="f"></h1>
+                    <!-- Search Bar-->
 
-                        <input
-                            class="searchBar"
-                            type="text"
+                    <div class="row justify-content-center"
+                        style="padding-top: 5%;">
+                        <input class="searchBar" type="text"
                             placeholder="Search"
                             name="Search"
-                            id="searchBar"
-                            oninput="doSearch()" />
+                            id="searchBar" oninput="doSearch()" />
 
-                        <button
-                            class="searchButton"
-                            type="submit"
+                        <button class="searchButton" type="submit"
                             onclick="doSearch()">
                             Search
                         </button>
 
-                        <button
-                            class="addContactButton"
-                            id="addContactButton"
-                            type="button"
-                            onclick="openPopup()">
-                            Create New Contact
+                        <button id="newContactBtn" class="newContactBtn"
+                            onclick="addNewContact()">
+                            New Contact
                         </button>
 
-                        <div id="contactPop-up" class="pop-up">
-                            <div class="pop-up-content">
-                                <h1 style="color:mediumpurple">
-                                    This is a popup window.
-                                </h1>
-                                <p>We will add our contacts information
-                                    here.</p>
-                                <button
-                                    class="createContactButton"
-                                    id="createContactButton"
-                                    type="button">
-                                    Create New Contact
-                                </button>
-                            </div>
+                    </div>
+
+                    <!--Add Contact Dialog-->
+                    <div class="row justify-content-center">
+                        <dialog id="createContactWindow"
+                            class="createContactWindow">
+                            <label>First Name</label>
+                            <input name="AddFName"
+                                placeholder="First Name" id="contactFirstName"
+                                required>
+                            <br>
+                            <label>Last Name</label>
+                            <input placeholder="Last Name"
+                                id="contactLastName" required>
+                            <br>
+                            <label>Phone Number</label>
+                            <input placeholder="Phone Number"
+                                id="contactPhone" required>
+                            <br>
+                            <label>Email</label>
+                            <input  placeholder="Email"
+                                id="contactEmail" required>
+                            <br>
+                            <button  id="addNewContact"
+                                type="button" onclick="saveNewContact()">
+                                Create New Contact
+                            </button>
+                            <button
+                                id="showCreateContactWindow"
+                                type="button" onclick="closeContactWindow()">
+                                Cancel
+                            </button>
+                        </dialog>
+
+                        <script>
+                        const dialog = document.getElementById("createContactWindow");
+
+                        function addNewContact() {
+                            dialog.show();
+                        }
+
+                        function closeContactWindow() {
+                            dialog.close();
+                        }
+                    </script>
+                    </div>
+
+                    <!-- Contacts Table-->
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+
+                            <table class="table">
+                                <thead>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col"></th>
+                                </thead>
+                                <tbody id="contactBody">
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>
                 </div>
-            </div>
-            <p id="p1"></p>
-            <div class="row" id="addContainer" style="visibility: collapse;">
-                <div class="col-lg-8">
-                    <div id="addContact">
-                        <span id="addContactResult"></span>
 
-                        <label>First Name</label>
-                        <input name="AddFName" placeholder="First Name"
-                            id="addFirstName" required>
-                        <label>Last Name</label>
-                        <input placeholder="Last Name" id="addLastName"
-                            required>
-                        <label>Phone Number</label>
-                        <input placeholder="Phone Number" id="addPhone"
-                            required>
-                        <label>Email</label>
-                        <input placeholder="Email" id="addEmail" required>
-                        <button value="confirm change" id="confirmAdd"
-                            type="submit" onclick="saveNewContact()"></button>
-                        <button value="cancel" id="cancelAdd"
-                            type="button" onclick="cancelAdd()"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="col-lg-8">
+            </body>
 
-                    <table class="table">
-                        <thead>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col"></th>
-                        </thead>
-                        <tbody id="contactBody">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+        </html>
 
-<script> readCookie()</script>
+        <script> readCookie()</script>

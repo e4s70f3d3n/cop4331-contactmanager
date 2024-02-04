@@ -43,14 +43,14 @@
     .cosmicButton {
         font-family: 'Magica';
         font-size: '12px';
-        height: 32.5px;
-        width: 90px;
-        background-color: blue;
-        color: aliceblue;
+        height: 65px;
+        width: 220px;
+        background: #957FEF;
+        color: #EFD9CE;
         transition-duration: 0.5s;
-        border: solid 5px;
+        border: solid 3px;
         border-radius: 15px;
-        border-color: aliceblue;
+        border-color: #DEC0F1;
         text-align: center;
     }
 
@@ -63,14 +63,25 @@
 
 h1 {
     font-family: 'Kaoly';
-
     animation: 3s ease-out 0s 1 slideInFromAbove;
     padding: 10%;
+    color: #EFD9CE;
+    background: none;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #957FEF;
+    paint-order: stroke fill;
 }
 
 
 h3 {
-    font-family: 'Magica';
+    font-family: 'Kaoly';
+    animation: 3s ease-out 0s 1 slideInFromAbove;
+    padding: 10%;
+    color: #EFD9CE;
+    background: none;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #957FEF;
+    paint-order: stroke fill;
 }
 
 html {
@@ -157,9 +168,7 @@ p {
 
 input {
     font-family: 'Magica';
-    font-size: px;
-    max-width: 450px;
-    max-height: 60px;
+    font-size: 12px;
     border: 3px solid plum;
     border-radius: 5px;
     padding-left: 1%;
@@ -213,48 +222,122 @@ input {
 }
 
 .searchBar {
-    width: 792px;
+    width: 636px;
     height: 42px;
     margin: 2%;
+    margin-left: 0%;
+    font-family: 'Magica';
+    color: #EFD9CE;
+    background: rgb(222, 192, 241, .5);
+    border-color: #7161EF;
 }
 
 .searchButton {
-    width: 86px;
-    height: 50px;
+    height: 42px;
+    font-family: 'Magica';
+    color: #EFD9CE;
+    background: rgb(222, 192, 241, .5);
+    border: 3px solid #7161EF;
+    border-radius: 5px;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    transition-duration: 2s;
+}
+.searchButton:hover{
+    transform: translateY(-10px);
+}
+
+.newContactBtn {
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 42px;
+    margin-left: 2%;
+    font-family: 'Magica';
+    color: #EFD9CE;
+    background: rgb(222, 192, 241, .5);
+    border: 3px solid #7161EF;
+    border-radius: 5px;
+    transition-duration: 2s;
+}
+
+.newContactBtn:hover{
+    transform: translateY(-10px);
+}
+
+.deleteButton{
+    background: #E86868;
+    border: none;
+    border-radius: 6px;
+    color: #EFD9CE;
+    font-family: 'Magica';
+    font-size: 12px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
     margin: 2%;
 }
 
-.addButton {
-    width: 86px;
-    height: 50px;
+.editButton{
+    background: #957FEF;
+    border: none;
+    border-radius: 6px;
+    color: #EFD9CE;
+    font-family: 'Magica';
+    font-size: 12px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
     margin: 2%;
 }
 
-table,
+.saveButton{
+    background: #82E868;
+    border: none;
+    border-radius: 6px;
+    color: #EFD9CE;
+    font-family: 'Magica';
+    font-size: 12px;
+    margin: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.table,
 tbody {
     width: 100%;
     font-family: 'Magica';
+    color: #EFD9CE;
     border: 50px, solid;
+    border-color: #7161EF;
 }
 
 th,
 td {
     border: 10px, solid;
     border-radius: 3px;
-    border-color: blue;
+    border-color: #7161EF;
 }
 
 thead {
-    background: blue;
+    background: #7161EF;
+    border-radius: 3px;
+    border-color: #7161EF;
 }
 
 tbody {
     background: rgb(183, 156, 237, .50);
-    color: white;
-
-    max-width: 1070px;
-    max-height: 754px;
+    color: #EFD9CE;
+    border: 50px, solid;
+    border-color: #7161EF;
     overflow: scroll;
+
 }
 
 #headerIndex {
@@ -262,16 +345,44 @@ tbody {
     height: 381px;
 }
 
-.menuButton{
-    border: none;
+.menuButton {
+    color: #EFD9CE;
     background: none;
-    font-size: 20px;
-    color: white;
+    border: none;
+    font-size: 30px;
+    font-family: 'Magica';
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #B79CED;
+    paint-order: stroke fill;
+    margin: 3%;
+}
+
+.menu_bar {
+    background: rgb(183, 156, 237, .5);
+}
+
+#contactBody {
+    max-height: 754px;
+    overflow: scroll;
+}
+
+.indexButton {
+    color: #EFD9CE;
+    background: none;
+    border: none;
+    font-family: 'Magica';
+    font-size: 30px;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #B79CED;
+    paint-order: stroke fill;
+    padding: 2%;
     transition-duration: 2s;
 }
 
-.menuButton:hover{
-    transform: translateY(-20px);
-    cursor: pointer;
-    color:#212529;
+.indexButton:hover {
+    color: #7161EF;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #EFD9CE;
+    paint-order: stroke fill;
+    transform: translateY(-10px);
 }
