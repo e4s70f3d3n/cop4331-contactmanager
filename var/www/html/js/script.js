@@ -72,7 +72,7 @@ function doRegister() {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8");
+	xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
 
 	try {
 		xhr.onreadystatechange = function () {
@@ -87,15 +87,13 @@ function doRegister() {
 					return;
 				}
 
-				userId = body.id;
-				firstName = body.firstName;
-				lastName = body.lastName;;
+				//.log(jsonObject);
+
+				//if(firstName == null) console.log("First Name Expected Got Null: " + firstName);
+
 				document.getElementById("registerResult").innerHTML = `User created`;
 
-				saveCookie();
-
-				window.location.href = "contacts.html";
-
+				window.location.href = "login.html";
 
 			}
 			else {

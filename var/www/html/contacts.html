@@ -66,13 +66,12 @@
                             id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-                            Search
+                            Show All Contacts
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
 
                         <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
-                          
                             New Contact
                         </button>
 
@@ -114,7 +113,7 @@
 
                             <!-- push button event that saves a new contact from within the dialog box -->
                             <button id="addNewContact" type="button"
-                                onclick="saveNewContact();">
+                                onclick="validatePhone();">
                                 Create New Contact
                             </button>
 
