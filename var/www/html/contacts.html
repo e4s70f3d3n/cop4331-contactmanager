@@ -39,11 +39,6 @@
                                 onclick="window.location.href='http://cop4331-15.xyz/about.html';"
                                 value="About Us"/>
                         </li>
-                        <li class="nav-item">
-                            <input type="button" class="menuButton"
-                                onclick="winfow.location.href = 'http://cop4331-15.xyz/contacts.html';"
-                                value="Contacts">
-                        </li>
 
                     </ul>
 
@@ -66,13 +61,12 @@
                             id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-                            Search
+                            Show All Contacts
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
 
                         <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
-                          
                             New Contact
                         </button>
 
@@ -112,21 +106,15 @@
                                 id="contactEmail" required>
                             <br>
 
-                            <span class="text" style="color:rgb(203, 40, 4);"
-                            id="contactResult"></span>
-                            <br>
-
                             <!-- push button event that saves a new contact from within the dialog box -->
                             <button id="addNewContact" type="button"
-                                onclick="validateContact();">
+                                onclick="validatePhone();">
                                 Create New Contact
                             </button>
 
                             <!-- push button event that closes the dialog box -->
                             <button id="showCreateContactWindow" type="button"
-                                onclick="closeContactWindow();
-                                document.getElementById('contactResult').innerHTML = ''
-                                ">
+                                onclick="closeContactWindow()">
                                 Cancel
                             </button>
                         </dialog>
@@ -153,6 +141,8 @@
 
                     <!-- Contacts Table-->
                     <div class="row justify-content-center" id='contactsTable'>
+                        <span class="text" style="color:rgb(203, 40, 4);"
+                            id="contactResult"></span>
                         <div class="col-md-11">
 
                             <table id="contacts" class="table">

@@ -406,10 +406,15 @@ tbody {
 
 .createContactWindow {
     position: absolute;
+    height: auto;
     background: white;
     border: 1px solid black;
     margin: auto;
     z-index: 10;
+}
+
+.contactResult {
+    float: left;
 }
 
 .text-left {
@@ -447,6 +452,7 @@ tbody {
 
 #contactEmailLabel {
     text-align: left;
+    padding-bottom: 30px;
 }
 
 .aboutIcon {
