@@ -83,7 +83,7 @@ function doRegister() {
 				//if there is an error, send an alert
 				if (jsonObject.error) {
 
-					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
+					document.getElementById("registerResult").innerHTML = `Username already exists`;
 					return;
 				}
 
@@ -99,13 +99,13 @@ function doRegister() {
 
 			}
 			else {
-				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				document.getElementById("registerResult").innerHTML = `Username already exists`;
 				return;
 			}
 		};
 		xhr.send(body);
 	} catch (err) {
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("registerResult").innerHTML = err.message;
 	}
 
 }
