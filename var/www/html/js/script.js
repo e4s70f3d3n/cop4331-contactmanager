@@ -146,7 +146,7 @@ function readCookie() {
 		window.location.href = "index.html";
 	}
 	else {
-		document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
+		//document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
 		//window.location.href = "contacts.html";
 
 	}
@@ -274,7 +274,18 @@ function deleteContact(index) {
 	};
 }
 
+function validatePhone(phoney) {
+	var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 
+	if (regex.test(phoney) == false) {
+		return false;
+	}
+	else {
+		return true;
+	}
+
+	
+}
 function editContact(index) {
 	document.getElementById("edit_button" + index).style.display = "none";
 	document.getElementById("save_button" + index).style.display = "inline-block";
@@ -347,7 +358,6 @@ function saveNewContact() {
 	let phoneNumber = document.getElementById("contactPhone").value;
 	let email = document.getElementById("contactEmail").value;
 
-
 	const body = JSON.stringify({
 		firstName: firstName,
 		lastName: lastName,
@@ -355,6 +365,7 @@ function saveNewContact() {
 		email: email,
 		userId: userId
 	});
+
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -372,6 +383,11 @@ function saveNewContact() {
 					alert(jsonObj.error);
 					return;
 				}
+
+				/*if(!validatePhone(phone)) {
+					document.getElementById("contactResult").innerHTML = "Phone number is blank/invalid";
+					return;
+				}*/
 
 				document.getElementById("addContactResult").innerHTML = "complete!";
 
