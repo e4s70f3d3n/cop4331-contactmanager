@@ -272,16 +272,33 @@ function deleteContact(index) {
 	};
 }
 
-function validatePhone(phoney) {
-	var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+function validateContact() {
 
-	if (regex.test(phoney) == false) {
-		return false;
+	var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+	let fname = document.getElementById('contactFirstName').value;
+	let lname = document.getElementById('contactLastName').value;
+	let p = document.getElementById('contactPhone').value;
+	let email = document.getElementById('contactEmail').value;
+
+
+	if (fname == '') {
+		document.getElementById("contactResult").innerHTML = 'First Name is blank'
+	}
+	else if (lname == '') {
+		document.getElementById("contactResult").innerHTML = 'Last Name is blank'
+	}
+	else if (regex.test(p) == false) {
+		document.getElementById("contactResult").innerHTML = 'Phone number is invalid'
+	}
+	else if (regex.test(email) == false) {
+		document.getElementById("contactResult").innerHTML = 'Email is invalid'
 	}
 	else {
-		return true;
+		saveNewContact();
 	}
-
+		
 	
 }
 function editContact(index) {
