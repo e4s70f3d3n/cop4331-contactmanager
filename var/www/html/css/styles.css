@@ -68,21 +68,21 @@ h1 {
     padding: 10%;
     color: #EFD9CE;
     background: none;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #957FEF;
-    paint-order: stroke fill;
+    text-shadow:
+        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+    ;
 }
 
 
 h3 {
     font-family: 'Kaoly';
     animation: 3s ease-out 0s 1 slideInFromAbove;
-    padding: 10%;
+    padding: 2%;
     color: #EFD9CE;
     background: none;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #957FEF;
-    paint-order: stroke fill;
+    text-shadow:
+        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+    ;
 }
 
 html {
@@ -171,20 +171,16 @@ p {
 .loginInput {
     width: 488px;
     height: 63px;
-    font: #EFD9CE;
+    font-family: 'Magica';
+    color: #0D082F;
     font-size: 20px;
     background: rgb(239, 217, 206, .1);
 }
 
-input::placeholder {
-    color: rgb(239, 217, 206, 1);
-}
-
-
 input {
     font-family: 'Magica';
     font-size: 12px;
-    color: EFD9CE;
+    color:#0D082F;
     border: 3px solid #7161EF;
     border-radius: 5px;
     padding-left: 1%;
@@ -195,7 +191,6 @@ input {
 
 .checklist-title {
     font-size: 15px;
-    margin-top: 2.5%;
 }
 
 .justify-content-center {
@@ -244,7 +239,7 @@ input {
     margin: 2%;
     margin-left: 0%;
     font-family: 'Magica';
-    color: #EFD9CE;
+    color: #0D082F;
     background: rgb(222, 192, 241, .5);
     border-color: #7161EF;
 }
@@ -252,7 +247,7 @@ input {
 .searchButton {
     height: 42px;
     font-family: 'Magica';
-    color: #EFD9CE;
+    color: #0D082F;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
@@ -275,7 +270,7 @@ input {
     height: 42px;
     margin-left: 2%;
     font-family: 'Magica';
-    color: #EFD9CE;
+    color: #0D082F;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
@@ -329,7 +324,8 @@ input {
 }
 
 
-.table, tbody {
+.table,
+tbody {
     width: 100%;
     font-family: 'Magica';
     color: #EFD9CE;
@@ -338,7 +334,8 @@ input {
     z-index: -5;
 }
 
-th, td {
+th,
+td {
     border: 10px, solid;
     border-radius: 3px;
     border-color: #7161EF;
@@ -352,7 +349,7 @@ thead {
 }
 
 tbody {
-    background: rgb(183, 156, 237, .50);
+    background: rgb(78, 69, 144, .50);
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
@@ -371,9 +368,9 @@ tbody {
     border: none;
     font-size: 30px;
     font-family: 'Magica';
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #B79CED;
-    paint-order: stroke fill;
+    text-shadow:
+        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+    ;
     margin: 3%;
 }
 
@@ -392,18 +389,18 @@ tbody {
     border: none;
     font-family: 'Magica';
     font-size: 30px;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #B79CED;
-    paint-order: stroke fill;
+    text-shadow:
+        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+    ;
     padding: 2%;
     transition-duration: 2s;
 }
 
 .indexButton:hover {
     color: #7161EF;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #EFD9CE;
-    paint-order: stroke fill;
+    text-shadow:
+        3px -1px 0 #EFD9CE, 0 -1px 0 #EFD9CE, 3px -1px 0 #EFD9CE, 3px 0 0 #EFD9CE, 3px 3px 0 #EFD9CE, 0 3px 0 #EFD9CE, -1px 3px 0 #EFD9CE, -1px 0 0 #EFD9CE;
+    ;
     transform: translateY(-10px);
 }
 
@@ -452,7 +449,7 @@ tbody {
     text-align: left;
 }
 
-.aboutIcon{
+.aboutIcon {
     height: 40%;
     width: 40%;
 }
