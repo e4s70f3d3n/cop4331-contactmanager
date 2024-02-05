@@ -171,13 +171,13 @@ p {
 .loginInput {
     width: 488px;
     height: 63px;
-    color: #EFD9CE;
+    font: #EFD9CE;
     font-size: 20px;
-    background: rgb(239, 217, 206, .2);
+    background: rgb(239, 217, 206, .1);
 }
 
-.loginInput::placeholder {
-    color: rgb(239, 217, 206, .7);
+input::placeholder {
+    color: rgb(239, 217, 206, 1);
 }
 
 
@@ -450,4 +450,9 @@ tbody {
 
 #contactEmailLabel {
     text-align: left;
+}
+
+.aboutIcon{
+    height: 40%;
+    width: 40%;
 }

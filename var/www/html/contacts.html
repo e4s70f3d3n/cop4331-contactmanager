@@ -57,14 +57,14 @@
                             name="Search"
                             id="searchBar" oninput="doSearch()" />
 
-                        <button class="searchButton" type="submit" onclick="doSearch()">
+                        <button class="searchButton" type="submit"
+                            onclick="doSearch()">
                             Search
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
-
-                        <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
-                          
+                        <button id="newContactBtn" class="newContactBtn"
+                            onclick="addNewContact();">
                             New Contact
                         </button>
 
@@ -75,47 +75,51 @@
 
                             <!-- dialog window that allows for a pop-up window to add
                              new contact information -->
-                        <dialog class="createContactWindow"
-                            id="createContactWindow">
-                            <label class="text-left" id="contactFirstNameLabel">
-                                First Name:
-                            </label>
-                            <input class="forename" name="AddFName"
-                                placeholder="First Name" id="contactFirstName"
-                                required>
-                            <br>
-                            <label class="text-left" id="contactLastNameLabel">
-                                Last Name:
-                            </label>
-                            <input class="surname" placeholder="Last Name"
-                                id="contactLastName" required>
-                            <br>
-                            <label class="text-left" id="contactPhoneLabel">
-                                Phone Number:
-                            </label>
-                            <input class="phoneNumber"
-                                placeholder="Phone Number" id="contactPhone"
-                                required>
-                            <br>
-                            <label class="text-left" id="contactEmailLabel">
-                                Email:
-                            </label>
-                            <input class="email" placeholder="Email"
-                                id="contactEmail" required>
-                            <br>
+                            <dialog class="createContactWindow"
+                                id="createContactWindow">
+                                <label class="text-left"
+                                    id="contactFirstNameLabel">
+                                    First Name:
+                                </label>
+                                <input class="forename" name="AddFName"
+                                    placeholder="First Name"
+                                    id="contactFirstName"
+                                    required>
+                                <br>
+                                <label class="text-left"
+                                    id="contactLastNameLabel">
+                                    Last Name:
+                                </label>
+                                <input class="surname" placeholder="Last Name"
+                                    id="contactLastName" required>
+                                <br>
+                                <label class="text-left" id="contactPhoneLabel">
+                                    Phone Number:
+                                </label>
+                                <input class="phoneNumber"
+                                    placeholder="Phone Number" id="contactPhone"
+                                    required>
+                                <br>
+                                <label class="text-left" id="contactEmailLabel">
+                                    Email:
+                                </label>
+                                <input class="email" placeholder="Email"
+                                    id="contactEmail" required>
+                                <br>
 
-                            <!-- push button event that saves a new contact from within the dialog box -->
-                            <button id="addNewContact" type="button"
-                                onclick="saveNewContact()">
-                                Create New Contact
-                            </button>
+                                <!-- push button event that saves a new contact from within the dialog box -->
+                                <button id="addNewContact" type="button"
+                                    onclick="saveNewContact()">
+                                    Create New Contact
+                                </button>
 
-                            <!-- push button event that closes the dialog box -->
-                            <button id="showCreateContactWindow" type="button"
-                                onclick="closeContactWindow()">
-                                Cancel
-                            </button>
-                        </dialog>
+                                <!-- push button event that closes the dialog box -->
+                                <button id="showCreateContactWindow"
+                                    type="button"
+                                    onclick="closeContactWindow()">
+                                    Cancel
+                                </button>
+                            </dialog>
 
                             <script>
 
