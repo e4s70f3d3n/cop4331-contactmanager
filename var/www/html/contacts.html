@@ -66,12 +66,13 @@
                             id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-                            Show All Contacts
+                            Search
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
 
                         <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
+                          
                             New Contact
                         </button>
 
@@ -111,15 +112,21 @@
                                 id="contactEmail" required>
                             <br>
 
+                            <span class="text" style="color:rgb(203, 40, 4);"
+                            id="contactResult"></span>
+                            <br>
+
                             <!-- push button event that saves a new contact from within the dialog box -->
                             <button id="addNewContact" type="button"
-                                onclick="validatePhone();">
+                                onclick="validateContact();">
                                 Create New Contact
                             </button>
 
                             <!-- push button event that closes the dialog box -->
                             <button id="showCreateContactWindow" type="button"
-                                onclick="closeContactWindow()">
+                                onclick="closeContactWindow();
+                                document.getElementById('contactResult').innerHTML = ''
+                                ">
                                 Cancel
                             </button>
                         </dialog>
@@ -146,8 +153,6 @@
 
                     <!-- Contacts Table-->
                     <div class="row justify-content-center" id='contactsTable'>
-                        <span class="text" style="color:rgb(203, 40, 4);"
-                            id="contactResult"></span>
                         <div class="col-md-11">
 
                             <table id="contacts" class="table">
