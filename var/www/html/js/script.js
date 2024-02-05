@@ -289,10 +289,10 @@ function validateContact() {
 	else if (lname == '') {
 		document.getElementById("contactResult").innerHTML = 'Last Name is blank'
 	}
-	else if (regex.test(p) == false) {
+	else if (phoneRegex.test(p) == false) {
 		document.getElementById("contactResult").innerHTML = 'Phone number is invalid'
 	}
-	else if (regex.test(email) == false) {
+	else if (emailRegex.test(email) == false) {
 		document.getElementById("contactResult").innerHTML = 'Email is invalid'
 	}
 	else {
