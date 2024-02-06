@@ -26,13 +26,13 @@
             <header>
                 <div class="row justify-content-center">
                     <div class="col">
-                        <h1 class="h1">Register</h1>
+                        <h1 class="h1" style="margin-top: -7%">Register</h1>
                     </div>
                 </div>
             </header>
 
             <form id="registerForm" onsubmit="doRegister(); return false;">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center2">
                     <div class="col">
                         <label>First Name</label>
                         <br />
@@ -70,20 +70,18 @@
                             class="password"
                             pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}"
                             placeholder="Password" oninput="checkPassword()" />
-
                         <br />
 
                         <div class="row justify-content-center">
                             <div class="col">
-                                <h3 style="margin-bottom: 2.5%"
+                                <h3 
                                     class="checklist-title">Password is</h3>
                                 <br />
                             </div>
                         </div>
 
-                        <div class="row justify-content-center"
-                            style="padding-bottom: 5%;">
-                            <div class="col-3">
+                        <div class="row justify-content-center">
+                            <div style="margin-top: -8.5%" class="col-3">
                                 <ul class="password-criteria list-group">
                                     <li id="passLen" style="margin-bottom: 2.5%"
                                         class="invalid">At least 8
@@ -110,6 +108,7 @@
                     </div>
                 </div>
 
+                <br>
                 <script type="text/javascript" src="js/passReq.js"></script>
 
                 <span class="text" style="color:rgb(203, 40, 4);"
