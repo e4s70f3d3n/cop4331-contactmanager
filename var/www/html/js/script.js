@@ -454,3 +454,39 @@ function showAllContacts() {
 		const tdEmail = tr[i].getElementsByTagName("td")[4];
 	}
 }
+
+function doRecover(){
+	let login = document.getElementById('login').value;
+	let newPassword = document.getElementById('newPassword').value;
+
+	let url = urlBase + '/UpdatePassword.' + extension;
+
+	let tmp= JSON.stringify({
+		login: login,
+		newPassword: newPassword
+	});
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try{
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				let jsonObject = JSON.parse(xhr.responseText);
+
+				if(jsonObject.error){
+					document.getElementById('recoverResult').innerHTML = jsonObject.error;
+					return;
+				}
+
+				window.location.href = "login.html";
+			}
+		};
+		xhr.send(tmp);
+	}
+	catch(err){
+		document.getElementById("recoverResult").innerHTML = err.message;
+		return false;
+	}
+}
