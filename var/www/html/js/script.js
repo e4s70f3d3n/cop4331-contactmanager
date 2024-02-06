@@ -404,12 +404,13 @@ function saveNewContact() {
 					return;
 				}*/
 
-				document.getElementById("addContactResult").innerHTML = "complete!";
+				//document.getElementById("addContactResult").innerHTML = "complete!";
+				document.getElementById("addDiv").style.height = "0px";
 
 				//reset the div
 			}
 			else {
-				document.getElementById("addContactResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				//document.getElementById("addContactResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
 				return;
 			}
 		};
@@ -421,7 +422,6 @@ function saveNewContact() {
 	}
 
 	dialog.close();
-	document.getElementById('contactsTable').style.visibility = "visible";
 
 
 }
@@ -439,5 +439,18 @@ function checkPassword() {
 		document.getElementById("checkPassResult").innerHTML = "<br/>" + "✅Passwords match!";
 		document.getElementById("checkPassResult").style.color = "green";
 		passCheck = true;
+	}
+}
+
+function showAllContacts() {
+	const table = document.getElementById("contacts");
+	const tr = table.getElementsByTagName("tr");
+
+	for (let i = 0; i < tr.length; i++) {
+		document.getElementById('contactsTable').style.visibility = "visible";
+		const tdFirstName = tr[i].getElementsByTagName("td")[0];
+		const tdLastName = tr[i].getElementsByTagName("td")[1];
+		const tdPhone = tr[i].getElementsByTagName("td")[3];
+		const tdEmail = tr[i].getElementsByTagName("td")[4];
 	}
 }

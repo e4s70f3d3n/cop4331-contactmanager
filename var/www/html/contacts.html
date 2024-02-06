@@ -39,6 +39,11 @@
                                 onclick="window.location.href='http://cop4331-15.xyz/about.html';"
                                 value="About Us"/>
                         </li>
+                        <li class="nav-item">
+                            <input type="button" class="menuButton"
+                                onclick="winfow.location.href = 'http://cop4331-15.xyz/contacts.html';"
+                                value="Contacts">
+                        </li>
 
                     </ul>
 
@@ -61,12 +66,15 @@
                             id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-                            Show All Contacts
+
+                            Load Contacts
+
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
 
                         <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
+
                             New Contact
                         </button>
 
@@ -82,39 +90,48 @@
                             <label class="text-left" id="contactFirstNameLabel">
                                 First Name:
                             </label>
-                            <input class="forename" name="AddFName"
+                          
+                            <input class="forename dialogFormBar" name="AddFName"
                                 placeholder="First Name" id="contactFirstName"
                                 required>
                             <br>
-                            <label class="text-left" id="contactLastNameLabel">
+                            <label class="text-left dialogFormBar" id="contactLastNameLabel">
                                 Last Name:
                             </label>
-                            <input class="surname" placeholder="Last Name"
+                            <input class="surname dialogFormBar" placeholder="Last Name"
                                 id="contactLastName" required>
                             <br>
-                            <label class="text-left" id="contactPhoneLabel">
+                            <label class="text-left dialogFormBar" id="contactPhoneLabel">
                                 Phone Number:
                             </label>
-                            <input class="phoneNumber"
+                            <input class="phoneNumbe dialogFormBar"
                                 placeholder="(XXX)-XXX-XXXX"
                                 id="contactPhone" required>
                             <br>
-                            <label class="text-left" id="contactEmailLabel">
+                            <label class="text-left dialogFormBar" id="contactEmailLabel">
                                 Email:
                             </label>
-                            <input class="email" placeholder="Email"
+                            <input class="email dialogFormBar" placeholder="Email"
                                 id="contactEmail" required>
                             <br>
 
+                            <span class="text" style="color:rgb(203, 40, 4);"
+                            id="contactResult"></span>
+                            <br>
+
                             <!-- push button event that saves a new contact from within the dialog box -->
-                            <button id="addNewContact" type="button"
-                                onclick="validatePhone();">
+                            <button id="addNewContact" type="button" class = "newContactButton"
+                                onclick="validateContact();">
                                 Create New Contact
                             </button>
 
                             <!-- push button event that closes the dialog box -->
-                            <button id="showCreateContactWindow" type="button"
-                                onclick="closeContactWindow()">
+
+                            <button id="showCreateContactWindow" type="button" class ="newContactButton"
+                                onclick="closeContactWindow();
+                                document.getElementById('contactResult').innerHTML = ''
+                                ">
+
                                 Cancel
                             </button>
                         </dialog>

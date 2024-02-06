@@ -11,9 +11,3 @@ function selectTab(tabIndex)
     //Show the Selected Tab
     document.getElementById(tabIndex).style.display = "block";
 }
-
-function unhideMain()
-{
-    let tabContent = document.getElementsByClassName("tabContent");
-	tabContent[0].style.display = "block";
-}
