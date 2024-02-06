@@ -1,6 +1,5 @@
 @font-face {
     font-family: "Magica";
-    letter-spacing: 50px;
     src:
         local("Magica"),
         url("fonts/Magica.otf") format("opentype");
@@ -68,21 +67,21 @@ h1 {
     padding: 10%;
     color: #EFD9CE;
     background: none;
-    text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
-    ;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #957FEF;
+    paint-order: stroke fill;
 }
 
 
 h3 {
     font-family: 'Kaoly';
     animation: 3s ease-out 0s 1 slideInFromAbove;
-    padding: 2%;
+    padding: 10%;
     color: #EFD9CE;
     background: none;
-    text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
-    ;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #957FEF;
+    paint-order: stroke fill;
 }
 
 html {
@@ -160,6 +159,7 @@ label {
     font-family: 'Magica';
     font-size: 12px;
     color: #EFD9CE
+    
 }
 
 p {
@@ -171,16 +171,20 @@ p {
 .loginInput {
     width: 488px;
     height: 63px;
-    font-family: 'Magica';
-    color: #0D082F;
+    color: #EFD9CE;
     font-size: 20px;
-    background: rgb(239, 217, 206, .1);
+    background: rgb(239, 217, 206, .2);
 }
+
+.loginInput::placeholder {
+    color: rgb(239, 217, 206, .7);
+}
+
 
 input {
     font-family: 'Magica';
     font-size: 12px;
-    color:#0D082F;
+    color: EFD9CE;
     border: 3px solid #7161EF;
     border-radius: 5px;
     padding-left: 1%;
@@ -188,9 +192,9 @@ input {
     background: rgb(239, 217, 206, .5);
 }
 
-
 .checklist-title {
     font-size: 15px;
+    margin-top: 2.5%;
 }
 
 .justify-content-center {
@@ -198,9 +202,16 @@ input {
     position: sticky;
 }
 
+.justify-content-center2 {
+    align-content: center;
+    position: sticky;
+    margin-top: -7%;
+}
+
 .password-criteria {
+    font-family: 'Magica';
     list-style: none;
-    text-align: center;
+    text-align:start;
     margin-top: -9.5%;
     padding-left: -20%;
     margin-bottom: 2.5%;
@@ -234,20 +245,21 @@ input {
 }
 
 .searchBar {
-    width: 636px;
+    width: 600px;
     height: 42px;
     margin: 2%;
     margin-left: 0%;
     font-family: 'Magica';
-    color: #0D082F;
+    color: #EFD9CE;
     background: rgb(222, 192, 241, .5);
     border-color: #7161EF;
 }
 
+
 .searchButton {
     height: 42px;
     font-family: 'Magica';
-    color: #0D082F;
+    color: #EFD9CE;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
@@ -270,7 +282,7 @@ input {
     height: 42px;
     margin-left: 2%;
     font-family: 'Magica';
-    color: #0D082F;
+    color: #EFD9CE;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
@@ -323,7 +335,6 @@ input {
     padding-bottom: 5%;
 }
 
-
 .table,
 tbody {
     width: 100%;
@@ -331,7 +342,6 @@ tbody {
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
-    z-index: -5;
 }
 
 th,
@@ -339,7 +349,6 @@ td {
     border: 10px, solid;
     border-radius: 3px;
     border-color: #7161EF;
-    z-index: -5;
 }
 
 thead {
@@ -349,7 +358,7 @@ thead {
 }
 
 tbody {
-    background: rgb(78, 69, 144, .50);
+    background: rgb(183, 156, 237, .50);
     color: #EFD9CE;
     border: 50px, solid;
     border-color: #7161EF;
@@ -368,9 +377,9 @@ tbody {
     border: none;
     font-size: 30px;
     font-family: 'Magica';
-    text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
-    ;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #B79CED;
+    paint-order: stroke fill;
     margin: 3%;
 }
 
@@ -389,33 +398,39 @@ tbody {
     border: none;
     font-family: 'Magica';
     font-size: 30px;
-    text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
-    ;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #B79CED;
+    paint-order: stroke fill;
     padding: 2%;
     transition-duration: 2s;
 }
 
 .indexButton:hover {
     color: #7161EF;
-    text-shadow:
-        3px -1px 0 #EFD9CE, 0 -1px 0 #EFD9CE, 3px -1px 0 #EFD9CE, 3px 0 0 #EFD9CE, 3px 3px 0 #EFD9CE, 0 3px 0 #EFD9CE, -1px 3px 0 #EFD9CE, -1px 0 0 #EFD9CE;
-    ;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #EFD9CE;
+    paint-order: stroke fill;
     transform: translateY(-10px);
 }
 
 .createContactWindow {
-    position: absolute;
-    height: auto;
-    background: white;
-    border: 1px solid black;
-    margin: auto;
-    z-index: 10;
+    width: 400px;
+    height: 200px;
+    background: #EFD9CE;
+    border: 3px solid #7161EF;
+    border-radius: 3px;
 }
 
-.contactResult {
-    float: left;
+
+.dialogFormBar {
+    margin: 2%;
+    margin-left: 0%;
+    font-family: 'Magica';
+    font-size: 10px;
+    color: #212529;
+    border-color: #7161EF;
 }
+
 
 .text-left {
     text-align: left;
@@ -452,10 +467,4 @@ tbody {
 
 #contactEmailLabel {
     text-align: left;
-    padding-bottom: 30px;
-}
-
-.aboutIcon {
-    height: 40%;
-    width: 40%;
 }
