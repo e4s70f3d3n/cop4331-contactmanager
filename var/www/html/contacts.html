@@ -37,7 +37,7 @@
                         <li class="nav-item disabled">
                             <input type="button" class="menuButton"
                                 onclick="window.location.href='http://cop4331-15.xyz/about.html';"
-                                value="About Us"/>
+                                value="About Us" />
                         </li>
                         <li class="nav-item">
                             <input type="button" class="menuButton"
@@ -53,92 +53,160 @@
                     class="col-md-9 justify-content-center align-items-center">
                     <h1 class="h1"
                         style="padding: 0%; margin-top: 5%">Welcome</h1>
-                    <h1 class="h3" style="padding: 0%;" id="f"></h1>
+                    <h3 class="h3" style="padding: 0%;" id="f"></h1>
                     <!-- Search Bar-->
 
-                    <div class="row justify-content-center"
+                    <div class="row justify-content-center align-items-center"
                         style="padding-top: 5%;">
 
-                        
-                        <input class="searchBar" type="text"
-                            placeholder="Search"
-                            name="Search"
-                            id="searchBar" onkeyup=searchContacts() />
+                        <div class="col-7">
 
-                        <button class="searchButton" type="submit" onclick="doSearch()">
-                            Load Contacts
-                        </button>
+                            <input class="searchBar" type="text"
+                                placeholder="Search"
+                                name="Search"
+                                id="searchBar" onkeyup=searchContacts() />
+
+                        </div>
+
+                        <div class="col-2">
+                            <button class="searchButton" type="submit"
+                                onclick="doSearch()">
+                                Load Contacts
+                            </button>
+                        </div>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
+                        <div class="col-2">
+                            <button id="newContactBtn" class="newContactBtn"
+                                onclick="addNewContact();">
 
-                        <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
-                          
-                            New Contact
-                        </button>
-
+                                New Contact
+                            </button>
+                        </div>
                     </div>
 
                     <div class="row justify-content-center">
-                        <div class="col justify-content-center" id = "addDiv">
+                        <div class="col justify-content-center" id="addDiv">
 
                             <!-- dialog window that allows for a pop-up window to add
                              new contact information -->
-                        <dialog class="createContactWindow"
-                            id="createContactWindow">
-                            <label class="text-left" id="contactFirstNameLabel">
-                                First Name:
-                            </label>
-                            <input class="forename dialogFormBar" name="AddFName"
-                                placeholder="First Name" id="contactFirstName"
-                                required>
-                            <br>
-                            <label class="text-left dialogFormBar" id="contactLastNameLabel">
-                                Last Name:
-                            </label>
-                            <input class="surname dialogFormBar" placeholder="Last Name"
-                                id="contactLastName" required>
-                            <br>
-                            <label class="text-left dialogFormBar" id="contactPhoneLabel">
-                                Phone Number:
-                            </label>
-                            <input class="phoneNumbe dialogFormBar"
-                                placeholder="(XXX)-XXX-XXXX"
-                                id="contactPhone" required>
-                            <br>
-                            <label class="text-left dialogFormBar" id="contactEmailLabel">
-                                Email:
-                            </label>
-                            <input class="email dialogFormBar" placeholder="Email"
-                                id="contactEmail" required>
-                            <br>
+                            <dialog class="createContactWindow"
+                                id="createContactWindow">
+                                <div class="row justify-content-center"
+                                    >
+                                    <div class="col-12">
+                                        <h3
+                                            style="animation: none; padding: 4%; font-size: 28px">Add
+                                            Contact</h2>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-4 justify-content-center">
+                                        <label class="text-left dialogFormBar"
+                                            id="contactFirstNameLabel">
+                                            First Name:
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
 
-                            <span class="text" style="color:rgb(203, 40, 4);"
-                            id="contactResult"></span>
-                            <br>
+                                        <input class="forename dialogFormBar"
+                                            name="AddFName"
+                                            placeholder="First Name"
+                                            id="contactFirstName"
+                                            required>
 
-                            <!-- push button event that saves a new contact from within the dialog box -->
-                            <button id="addNewContact" type="button" class = "newContactButton"
-                                onclick="validateContact();">
-                                Create New Contact
-                            </button>
+                                    </div>
+                                </div>
 
-                            <!-- push button event that closes the dialog box -->
-                            <button id="showCreateContactWindow" type="button" class ="newContactButton"
-                                onclick="closeContactWindow();
+                                <div
+                                    class="row addContactRows justify-content-center">
+                                    <div class="col-4 justify-content-center">
+                                        <label class="text-left dialogFormBar"
+                                            id="contactLastNameLabel">
+                                            Last Name:
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="surname dialogFormBar"
+                                            placeholder="Last Name"
+                                            id="contactLastName" required>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="row addContactRows justify-content-center">
+                                    <div class="col-4 justify-content-center ">
+
+                                        <label class="text-left dialogFormBar"
+                                            id="contactPhoneLabel">
+                                            Phone:
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="phoneNumber dialogFormBar"
+                                            placeholder="(XXX)-XXX-XXXX"
+                                            id="contactPhone" required>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="row addContactRows justify-content-center">
+                                    <div class="col-4 justify-content-center">
+
+                                        <label class="text-left dialogFormBar"
+                                            id="contactEmailLabel">
+                                            Email:
+                                        </label>
+
+                                    </div>
+                                    <div class="col-6">
+
+                                        <input class="email dialogFormBar"
+                                            placeholder="Email"
+                                            id="contactEmail" required>
+
+                                    </div>
+                                    <span class="text"
+                                    style="color:rgb(203, 40, 4);"
+                                    id="contactResult"></span>
+                                </div>
+
+
+                                <div
+                                    class="row addContactRows align-items-center justify-content-center">
+                                    <div class="col-6">
+
+                                        <!-- push button event that saves a new contact from within the dialog box -->
+                                        <button id="addNewContact" type="button"
+                                            class="newContactButton cosmicButton"
+                                            onclick="validateContact();">
+                                            Create New Contact
+                                        </button>
+
+                                    </div>
+                                    <div class="col-6">
+
+                                        <!-- push button event that closes the dialog box -->
+                                        <button id="showCreateContactWindow"
+                                            type="button"
+                                            class="newContactButton cosmicButton"
+                                            onclick="closeContactWindow();
                                 document.getElementById('contactResult').innerHTML = ''
                                 ">
-                                Cancel
-                            </button>
-                        </dialog>
-                        
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </dialog>
 
                             <script>
 
                         const dialog = document.getElementById("createContactWindow");
 
                         function addNewContact() {
-                            
-                            document.getElementById('addDiv').style.height = "400px";
+
+                            document.getElementById('addDiv').style.height =  "450px";
                             dialog.show();
                         }
 
@@ -152,7 +220,8 @@
                     </div>
 
                     <!-- Contacts Table-->
-                    <div class="row justify-content-center" id='contactsTable'>
+                    <div class="row justify-content-center"
+                        id='contactsTable'>
                         <div class="col-md-11">
 
                             <table id="contacts" class="table">
