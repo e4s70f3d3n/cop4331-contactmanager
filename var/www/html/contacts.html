@@ -66,15 +66,13 @@
                             id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-
                             Load Contacts
-
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
 
                         <button id="newContactBtn" class="newContactBtn" onclick="addNewContact();">
-
+                          
                             New Contact
                         </button>
 
@@ -90,7 +88,6 @@
                             <label class="text-left" id="contactFirstNameLabel">
                                 First Name:
                             </label>
-                          
                             <input class="forename dialogFormBar" name="AddFName"
                                 placeholder="First Name" id="contactFirstName"
                                 required>
@@ -126,12 +123,10 @@
                             </button>
 
                             <!-- push button event that closes the dialog box -->
-
                             <button id="showCreateContactWindow" type="button" class ="newContactButton"
                                 onclick="closeContactWindow();
                                 document.getElementById('contactResult').innerHTML = ''
                                 ">
-
                                 Cancel
                             </button>
                         </dialog>
@@ -158,8 +153,6 @@
 
                     <!-- Contacts Table-->
                     <div class="row justify-content-center" id='contactsTable'>
-                        <span class="text" style="color:rgb(203, 40, 4);"
-                            id="contactResult"></span>
                         <div class="col-md-11">
 
                             <table id="contacts" class="table">
