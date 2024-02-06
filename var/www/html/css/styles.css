@@ -30,7 +30,7 @@
         font-size: medium;
         max-width: 450px;
         max-height: 60px;
-        border: 3px solid plum;
+        border: 3px solid #957FEF;
         border-radius: 5px;
     }
 
@@ -61,7 +61,7 @@ p {
     font-size: x-large;
     color: #EFD9CE;
     text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
 
 }
 
@@ -72,7 +72,7 @@ h1 {
     color: #EFD9CE;
     background: none;
     text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
 }
 
 
@@ -83,7 +83,7 @@ h3 {
     color: #EFD9CE;
     background: none;
     text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
 
 }
 
@@ -489,17 +489,20 @@ label.dialogFormBar {
 .descriptionHeader {
     font-size: medium;
     margin-top: 3%;
+    text-shadow:
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
+
 }
 
 .description {
     font-family: 'Magica';
     font-size: medium;
-    color: #7161EF;
+    color: #2F1FA5;
     text-shadow: none;
 }
 
 .formH3 {
     text-shadow:
-        3px -1px 0 #7161EF, 0 -1px 0 #7161EF, 3px -1px 0 #7161EF, 3px 0 0 #7161EF, 3px 3px 0 #7161EF, 0 3px 0 #7161EF, -1px 3px 0 #7161EF, -1px 0 0 #7161EF;
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
 
 }
