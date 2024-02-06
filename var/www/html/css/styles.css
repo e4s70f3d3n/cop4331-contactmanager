@@ -7,6 +7,7 @@
 
 @font-face {
     font-family: "Kaoly";
+    line-height: 30%;
     size-adjust: 150%;
     src:
         local("Kaoly"),
@@ -476,4 +477,24 @@ label.dialogFormBar {
 
 .addContactRows {
     padding: 2%;
+}
+
+.aboutIcon {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: solid 5px #EFD9CE;
+}
+
+.descriptionHeader{
+    font-size: medium;
+    margin-top: 3%;
+}
+
+.description {
+    font-family: 'Magica';
+    font-size: medium;
+    color: #7161EF;
+    text-shadow: none;
 }
