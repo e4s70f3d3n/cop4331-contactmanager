@@ -249,12 +249,12 @@ input {
 .searchButton {
     height: 42px;
     font-family: 'Magica';
-    color: #EFD9CE;
+    color: #2F1FA5;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
     margin-top: 2%;
     margin-bottom: 2%;
     transition-duration: 2s;
@@ -265,17 +265,16 @@ input {
 }
 
 .newContactBtn {
-    padding-left: 2%;
-    padding-right: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
     height: 42px;
-    margin-left: 2%;
     font-family: 'Magica';
-    color: #EFD9CE;
+    color: #2F1FA5;
     background: rgb(222, 192, 241, .5);
     border: 3px solid #7161EF;
     border-radius: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     transition-duration: 2s;
 }
 
@@ -487,7 +486,7 @@ label.dialogFormBar {
     border: solid 5px #EFD9CE;
 }
 
-.descriptionHeader{
+.descriptionHeader {
     font-size: medium;
     margin-top: 3%;
 }
@@ -497,4 +496,10 @@ label.dialogFormBar {
     font-size: medium;
     color: #7161EF;
     text-shadow: none;
+}
+
+.formH3 {
+    text-shadow:
+        3px -1px 0 #7161EF, 0 -1px 0 #7161EF, 3px -1px 0 #7161EF, 3px 0 0 #7161EF, 3px 3px 0 #7161EF, 0 3px 0 #7161EF, -1px 3px 0 #7161EF, -1px 0 0 #7161EF;
+
 }
