@@ -72,7 +72,7 @@ function doRegister() {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-Type", "application/json; charset = UTF-8");
+	xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
 
 	try {
 		xhr.onreadystatechange = function () {
@@ -83,28 +83,27 @@ function doRegister() {
 				//if there is an error, send an alert
 				if (jsonObject.error) {
 
-					document.getElementById("registerResult").innerHTML = `Error: ${xhr.responseText}`;
+					document.getElementById("registerResult").innerHTML = `Username already exists`;
 					return;
 				}
 
-				userId = body.id;
-				firstName = body.firstName;
-				lastName = body.lastName;
-				saveCookie();
-				document.getElementById("registerResult").innerHTML = `Complete`;
+				//.log(jsonObject);
 
+				//if(firstName == null) console.log("First Name Expected Got Null: " + firstName);
 
-				window.location.href = "contacts.html";
+				document.getElementById("registerResult").innerHTML = `User created`;
+
+				window.location.href = "login.html";
 
 			}
 			else {
-				document.getElementById("registerResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				document.getElementById("registerResult").innerHTML = `Username already exists`;
 				return;
 			}
 		};
 		xhr.send(body);
 	} catch (err) {
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("registerResult").innerHTML = err.message;
 	}
 
 }
@@ -114,6 +113,13 @@ function saveCookie() {
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+
+function returnCookie(firstName, lastName, userId) {
+	let minutes = 20;
+	let date = new Date();
+	date.setTime(date.getTime() + (minutes * 60 * 1000));
+	return document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
 function readCookie() {
@@ -138,7 +144,7 @@ function readCookie() {
 		window.location.href = "index.html";
 	}
 	else {
-		document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
+		//document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
 		//window.location.href = "contacts.html";
 
 	}
@@ -150,6 +156,35 @@ function doLogout() {
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
+}
+
+function searchContacts() {
+	const searchResults = document.getElementById("searchBar");
+	const results = searchResults.value.toUpperCase().split(' ');
+	const table = document.getElementById("contacts");
+	const tr = table.getElementsByTagName("tr");
+
+	for (let i = 0; i < tr.length; i++) {
+		const tdFirstName = tr[i].getElementsByTagName("td")[0];
+		const tdLastName = tr[i].getElementsByTagName("td")[1];
+
+		if (tdFirstName && tdLastName) {
+			const firstNameVal = tdFirstName.textContent || tdFirstName.innerText;
+			const lastNameVal = tdLastName.textContent || tdLastName.innerText;
+			tr[i].style.display = "none";
+
+			for (selection of results) {
+				if(firstNameVal.toUpperCase().indexOf(selection) > -1) {
+					tr[i].style.display = "";
+				}
+				if (lastNameVal.toUpperCase().indexOf(selection) > -1) {
+					tr[i].style.display = ""
+				}
+			}
+		}
+
+	}
+
 }
 
 function doSearch() {
@@ -236,7 +271,36 @@ function deleteContact(index) {
 		}
 	};
 }
-f
+
+function validateContact() {
+
+	var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+	let fname = document.getElementById('contactFirstName').value;
+	let lname = document.getElementById('contactLastName').value;
+	let p = document.getElementById('contactPhone').value;
+	let email = document.getElementById('contactEmail').value;
+
+
+	if (fname == '') {
+		document.getElementById("contactResult").innerHTML = 'First Name is blank'
+	}
+	else if (lname == '') {
+		document.getElementById("contactResult").innerHTML = 'Last Name is blank'
+	}
+	else if (phoneRegex.test(p) == false) {
+		document.getElementById("contactResult").innerHTML = 'Phone number is invalid'
+	}
+	else if (emailRegex.test(email) == false) {
+		document.getElementById("contactResult").innerHTML = 'Email is invalid'
+	}
+	else {
+		saveNewContact();
+	}
+		
+	
+}
 function editContact(index) {
 	document.getElementById("edit_button" + index).style.display = "none";
 	document.getElementById("save_button" + index).style.display = "inline-block";
@@ -309,7 +373,6 @@ function saveNewContact() {
 	let phoneNumber = document.getElementById("contactPhone").value;
 	let email = document.getElementById("contactEmail").value;
 
-
 	const body = JSON.stringify({
 		firstName: firstName,
 		lastName: lastName,
@@ -317,6 +380,7 @@ function saveNewContact() {
 		email: email,
 		userId: userId
 	});
+
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -335,27 +399,29 @@ function saveNewContact() {
 					return;
 				}
 
-				document.getElementById("addContactResult").innerHTML = "complete!";
+				/*if(!validatePhone(phone)) {
+					document.getElementById("contactResult").innerHTML = "Phone number is blank/invalid";
+					return;
+				}*/
+
+				//document.getElementById("addContactResult").innerHTML = "complete!";
+				document.getElementById("addDiv").style.height = "0px";
 
 				//reset the div
 			}
 			else {
-				document.getElementById("addContactResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
+				//document.getElementById("addContactResult").innerHTML = `Error ${xhr.status}: ${xhr.responseText}`;
 				return;
 			}
 		};
 		xhr.send(body);
-		
-		document.getElementById('addDiv').style.height = "0px";
 	}
-	
 	catch (err) {
 		document.getElementById("addContactResult").innerHTML = err.message;
 
 	}
 
 	dialog.close();
-	document.getElementById('contactsTable').style.visibility = "visible";
 
 
 }
@@ -366,11 +432,25 @@ function checkPassword() {
 
 	if (initPassword !== checkPass) {
 		document.getElementById("checkPassResult").style.visibility = "visible";
-		document.getElementById("checkPassResult").innerHTML = "<br/>" + "Passwords much match!";
+		document.getElementById("checkPassResult").innerHTML = "<br/>" + "❌Passwords much match!";
 		document.getElementById("checkPassResult").style.color = "red";
 	}
 	else {
-		document.getElementById("checkPassResult").innerHTML = "<br/>" + "Passowrds match";
+		document.getElementById("checkPassResult").innerHTML = "<br/>" + "✅Passwords match!";
+		document.getElementById("checkPassResult").style.color = "green";
 		passCheck = true;
+	}
+}
+
+function showAllContacts() {
+	const table = document.getElementById("contacts");
+	const tr = table.getElementsByTagName("tr");
+
+	for (let i = 0; i < tr.length; i++) {
+		document.getElementById('contactsTable').style.visibility = "visible";
+		const tdFirstName = tr[i].getElementsByTagName("td")[0];
+		const tdLastName = tr[i].getElementsByTagName("td")[1];
+		const tdPhone = tr[i].getElementsByTagName("td")[3];
+		const tdEmail = tr[i].getElementsByTagName("td")[4];
 	}
 }

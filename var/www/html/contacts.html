@@ -12,6 +12,12 @@
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/contacts.js"></script>
         <link rel="stylesheet" href="css/styles.css">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+			readCookie();
+            document.getElementById("f").innerHTML = "Logged in as " + firstName + " " + lastName;
+		}, false);
+        </script>
     </head>
 
     <body style='height: 100%; width: 100%;'>
@@ -53,13 +59,14 @@
                     <div class="row justify-content-center"
                         style="padding-top: 5%;">
 
+                        
                         <input class="searchBar" type="text"
                             placeholder="Search"
                             name="Search"
-                            id="searchBar" oninput="doSearch()" />
+                            id="searchBar" onkeyup=searchContacts() />
 
                         <button class="searchButton" type="submit" onclick="doSearch()">
-                            Search
+                            Load Contacts
                         </button>
 
                         <!-- push button event that opens the dialogs box for the add contact window -->
@@ -81,45 +88,49 @@
                             <label class="text-left" id="contactFirstNameLabel">
                                 First Name:
                             </label>
-                            <input class="forename" name="AddFName"
+                            <input class="forename dialogFormBar" name="AddFName"
                                 placeholder="First Name" id="contactFirstName"
                                 required>
                             <br>
-                            <label class="text-left" id="contactLastNameLabel">
+                            <label class="text-left dialogFormBar" id="contactLastNameLabel">
                                 Last Name:
                             </label>
-                            <input class="surname" placeholder="Last Name"
+                            <input class="surname dialogFormBar" placeholder="Last Name"
                                 id="contactLastName" required>
                             <br>
-                            <label class="text-left" id="contactPhoneLabel">
+                            <label class="text-left dialogFormBar" id="contactPhoneLabel">
                                 Phone Number:
                             </label>
-                            <input class="phoneNumber"
-                                placeholder="Phone Number"
-                                id="contactPhone"
-                                pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/"
-                                oninput="enableCreateContact()"
-                                required>
+                            <input class="phoneNumbe dialogFormBar"
+                                placeholder="(XXX)-XXX-XXXX"
+                                id="contactPhone" required>
                             <br>
-                            <label class="text-left" id="contactEmailLabel">
+                            <label class="text-left dialogFormBar" id="contactEmailLabel">
                                 Email:
                             </label>
-                            <input class="email" placeholder="Email"
+                            <input class="email dialogFormBar" placeholder="Email"
                                 id="contactEmail" required>
                             <br>
 
+                            <span class="text" style="color:rgb(203, 40, 4);"
+                            id="contactResult"></span>
+                            <br>
+
                             <!-- push button event that saves a new contact from within the dialog box -->
-                            <button id="addNewContact" type="button"
-                                onclick="saveNewContact()">
+                            <button id="addNewContact" type="button" class = "newContactButton"
+                                onclick="validateContact();">
                                 Create New Contact
                             </button>
 
                             <!-- push button event that closes the dialog box -->
-                            <button id="showCreateContactWindow" type="button"
-                                onclick="closeContactWindow()">
+                            <button id="showCreateContactWindow" type="button" class ="newContactButton"
+                                onclick="closeContactWindow();
+                                document.getElementById('contactResult').innerHTML = ''
+                                ">
                                 Cancel
                             </button>
                         </dialog>
+                        
 
                             <script>
 
@@ -144,7 +155,7 @@
                     <div class="row justify-content-center" id='contactsTable'>
                         <div class="col-md-11">
 
-                            <table class="table">
+                            <table id="contacts" class="table">
                                 <thead>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
@@ -163,5 +174,3 @@
             </body>
 
         </html>
-
-        <script> readCookie()</script>
