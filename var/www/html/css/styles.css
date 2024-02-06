@@ -75,11 +75,13 @@ h1 {
 h3 {
     font-family: 'Kaoly';
     animation: 3s ease-out 0s 1 slideInFromAbove;
-    padding: 2%;
+    padding: 10%;
     color: #EFD9CE;
     background: none;
     text-shadow:
         3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+
+}
 
 }
 
@@ -151,6 +153,7 @@ label {
     font-family: 'Magica';
     font-size: 12px;
     color: #7161EF
+
 }
 
 p {
@@ -398,7 +401,6 @@ tbody {
     color: #7161EF;
     text-shadow:
         3px -1px 0 #EFD9CE, 0 -1px 0 #EFD9CE, 3px -1px 0 #EFD9CE, 3px 0 0 #EFD9CE, 3px 3px 0 #EFD9CE, 0 3px 0 #EFD9CE, -1px 3px 0 #EFD9CE, -1px 0 0 #EFD9CE;
-
     transform: translateY(-10px);
 }
 
@@ -408,6 +410,7 @@ tbody {
     background: #EFD9CE;
     border: 3px solid #7161EF;
     border-radius: 3px;
+
 }
 
 
@@ -419,7 +422,6 @@ tbody {
     color: #212529;
     border-color: #7161EF;
 }
-
 
 .text-left {
     text-align: left;
@@ -456,6 +458,7 @@ tbody {
 
 #contactEmailLabel {
     text-align: left;
+
 }
 
 .formStyle{
