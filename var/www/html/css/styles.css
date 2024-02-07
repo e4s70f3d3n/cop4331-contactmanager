@@ -388,7 +388,7 @@ tbody {
     font-family: 'Magica';
     font-size: 30px;
     text-shadow:
-        3px -1px 0 #957FEF, 0 -1px 0 #957FEF, 3px -1px 0 #957FEF, 3px 0 0 #957FEF, 3px 3px 0 #957FEF, 0 3px 0 #957FEF, -1px 3px 0 #957FEF, -1px 0 0 #957FEF;
+        3px -1px 0 #2F1FA5, 0 -1px 0 #2F1FA5, 3px -1px 0 #2F1FA5, 3px 0 0 #2F1FA5, 3px 3px 0 #2F1FA5, 0 3px 0 #2F1FA5, -1px 3px 0 #2F1FA5, -1px 0 0 #2F1FA5;
 
     padding: 2%;
     transition-duration: 2s;
